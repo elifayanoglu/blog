@@ -1,0 +1,13 @@
+{
+    "name": "asus/cms2",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./" 
+        }
+    },
+
+    "require": {
+        "vlucas/phpdotenv": "^5.3",
+        "bramus/router": "~1.6"
+    }
+}
