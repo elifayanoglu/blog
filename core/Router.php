@@ -51,7 +51,7 @@ class Router{
          return call_user_func($callback,$this->request,$this->response);*/
      }
 
-  /*   public function renderView($view,$params=[])
+    public function renderView($view,$params=[])
      {
              return Application::$app->view->renderView($view,$params);
      }
@@ -83,5 +83,5 @@ class Router{
         include_once  Application::$ROOT_DIR."/view/$view.php";
         return ob_get_clean();
 
-     }*/
+     }
 }

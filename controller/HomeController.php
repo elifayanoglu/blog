@@ -8,42 +8,42 @@ use app\core\Request;
 
 class HomeController extends Controller{
 
-    public function home()
+    public function main()
     {
         $params = [
             "name"=>"realhome"
         ];
        // $this->setLayout("home");
-       return $this->render("home",$params);
+       return $this->twig->render("main",$params);
     }
 
     public function categories()  
     {
-       $this->setLayout("home");
+       $this->setLayout("main");
        return $this->render("categorypost");
     } 
 
     public function contact()
     {
-        $this->setLayout("home");
+        $this->setLayout("main");
         return $this->render("contact");
     }
 
     public function favourites()
     {
-        $this->setLayout("home");
+        $this->setLayout("main");
         return $this->render("favorites");
     }
 
     public function about()
     {
-        $this->setLayout("home");
+        $this->setLayout("main");
         return $this->render("about");
     }
 
     public function account()
     {
-        $this->setLayout("home");
+        $this->setLayout("main");
         return $this->render("account");
     }
 }

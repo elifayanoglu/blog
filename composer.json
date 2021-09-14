@@ -8,6 +8,8 @@
 
     "require": {
         "vlucas/phpdotenv": "^5.3",
-        "bramus/router": "~1.6"
+        "bramus/router": "~1.6",
+        "twig/twig": "3.0",
+        "league/plates": "^3.4"
     }
 }

@@ -3,6 +3,7 @@
 namespace app\core\db;
 
 use m0001_initial;
+use m0002_add_password_column;
 use app\core\Application;
 
 

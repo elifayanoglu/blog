@@ -104,7 +104,7 @@ $memberController = new MemberController();
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">Ali Bingül</a>
+                                    <a class="js-acc-btn" href="#">Elif Ayanoğlu</a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="account-dropdown__body">

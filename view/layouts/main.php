@@ -56,7 +56,7 @@ $memberController = new MemberController();
             <div class="header__content row">
 
                 <div class="header__logo">
-                    <a class="logo" href="/cms/">
+                    <a class="logo" href="/cms2/">
                         <img src="<?= PUBLIC_PATH ?>/philosophy/images/logo.svg" alt="Homepage">
                     </a>
                 </div> <!-- end header__logo -->
@@ -85,7 +85,7 @@ $memberController = new MemberController();
                     </div>
                 <?php else : ?>
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms/logout" style="color: white;"><?php echo /*Application::$app->member->getDisplayName();*/ $memberController->getMember(['id' => $_SESSION['member']])->username ?>
+                        <a href="/cms2/logout" style="color: white;"><?php echo /*Application::$app->member->getDisplayName();*/ $memberController->getMember(['id' => $_SESSION['member']])->username ?>
                             (Logout)
                         </a>
                     </div>
@@ -114,15 +114,15 @@ $memberController = new MemberController();
                             <a href="#0" title="">Categories</a>
                             <ul class="sub-menu">
                                 <?php foreach ($categoryController->getCategories() as $key => $value) : ?>
-                                    <li><a href="/cms/categories/<?php echo $value['slug'] ?>"><?php echo $value['name'] ?></a></li>
+                                    <li><a href="/cms2/categories/<?php echo $value['slug'] ?>"><?php echo $value['name'] ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </li>
                         <li><a href="/cms/about" title="">About</a></li>
                         <li><a href="/cms/contact" title="">Contact</a></li>
                         <?php  if(!Application::isGuest()) : ?>
-                            <li class=""><a href="/cms/favorites" title="">Favorites</a></li>
-                        <li><a href="/cms/account" title="">Account</a></li>
+                            <li class=""><a href="/cms2/favorites" title="">Favorites</a></li>
+                        <li><a href="/cms2/account" title="">Account</a></li>
                         <?php endif;?>
                     </ul> <!-- end header__nav -->
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>

@@ -12,13 +12,18 @@ use app\core\middlewares\AuthMiddleware;
 
 class AuthController extends Controller{
 
-
+   
     public function __construct()
     {
         $this->registerMiddleware(new AuthMiddleware(['profile']));
+        
+        
     }
-    public function login(Request $request,Response $response)
+    public function login()
     {
+      /* $request = new Request;
+       $response= new Response;
+
         $loginForm = new LoginForm();
         if($request->isPost()){
             $loginForm->loadData($request->getBody());
@@ -27,10 +32,8 @@ class AuthController extends Controller{
                   return ;
             }
         }
-        $this->setLayout("auth");
-       return $this->render("login",[
-           'model' => $loginForm
-       ]);
+        // $this->setLayout("auth");*/
+        return $this->templates->render('login');
     }
 
 
