@@ -206,7 +206,9 @@ $memberController = new MemberController();
                  <?php \app\core\Application::$app->session->getFlash('success') ?>
                 </div>
             <?php endif;?>
-            {{content}}
+
+            <?=$this->section('content')?>
+            
         </div>
 
 

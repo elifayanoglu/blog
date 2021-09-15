@@ -24,19 +24,18 @@ abstract class BaseField{
 
     public function __toString()
     {
-        return sprintf('
+        return sprintf(
+            '
         <div class="form-group">
-          <label>%s</label>
-           %s
-           <div class="invalid-feedback">
+            <label>%s</label>
             %s
-           </div>
+            <div class="invalid-feedback">
+                %s
+            </div>
         </div>',
-        
-        $this->model->getLabel($this->attribute),
-        $this->renderInput(),
-        $this->model->getFirstError($this->attribute)
-
+            $this->model->getLabel($this->attribute),
+            $this->renderInput(),
+            $this->model->getFirstError($this->attribute)
         );
     }
 

@@ -80,10 +80,10 @@ $memberController = new MemberController();
 
                    <?php if (Application::isGuest()) : ?> 
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms/login" style="color: white;">Login</a>
+                        <a href="/cms2/login" style="color: black;">Login</a>
                     </div>
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms/register" style="color: white;">Register</a>
+                        <a href="/cms2/register" style="color: black;">Register</a>
                     </div>
                 <?php else : ?>
                     <div style="display:flex; justify-content:flex-end;">
@@ -111,7 +111,7 @@ $memberController = new MemberController();
                     <h2 class="header__nav-heading h6">Site Navigation</h2>
 
                     <ul class="header__nav">
-                        <li class="current"><a href="/cms/" title="">Home</a></li>
+                        <li class="current"><a href="/cms2/" title="">Home</a></li>
                         <li class="has-children">
                             <a href="#0" title="">Categories</a>
                             <ul class="sub-menu">
@@ -120,8 +120,8 @@ $memberController = new MemberController();
                                 <?php endforeach; ?>
                             </ul>
                         </li>
-                        <li><a href="/cms/about" title="">About</a></li>
-                        <li><a href="/cms/contact" title="">Contact</a></li>
+                        <li><a href="/cms2/about" title="">About</a></li>
+                        <li><a href="/cms2/contact" title="">Contact</a></li>
                         <?php  if(!Application::isGuest()) : ?>
                             <li class=""><a href="/cms2/favorites" title="">Favorites</a></li>
                         <li><a href="/cms2/account" title="">Account</a></li>

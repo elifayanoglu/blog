@@ -28,7 +28,6 @@ $config = [
         "password" => $_ENV["DB_PASSWORD"]
     ]
 ];
-//echo "hello";
 
 $app= new Application(__DIR__ , $config);
 

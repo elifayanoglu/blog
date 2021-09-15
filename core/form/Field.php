@@ -12,10 +12,10 @@ class Field extends BaseField{//InputFiled
     public const TYPE_NUMBER = "number"; 
 
     public string $type;
-  //  public Model $model;
-  //  public string $attribute;
+   // public Model $model;
+   // public string $attribute;
 
-    public function __construct(\app\core\Model $model, string $attribute)
+    public function __construct(Model $model, string $attribute)
     {
         $this->type = self::TYPE_TEXT;
         parent::__construct($model,$attribute);
@@ -29,11 +29,13 @@ class Field extends BaseField{//InputFiled
     }
     public function renderInput(): string
     {
-        return sprintf('<input type=%s name=%s value=%s class="form-control%s">',
-        $this->type,
-        $this->attribute,
-        $this->model->{$this->attribute},
-        $this->model->hasError($this->attribute) ? 'is-invalid' : ''
-         );
+        return sprintf(
+            '<input type="%s" name="%s" value="%s" class="au-input au-input--full form-control%s" placeholder="%s">',
+            $this->type,
+            $this->attribute,
+            $this->model->{$this->attribute},
+            $this->model->hasError($this->attribute) ? ' is-invalid' : '',
+            $this->model->getLabel($this->attribute)
+        );
     }
 }

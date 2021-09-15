@@ -11,7 +11,7 @@ class MemberController extends Controller{
 
     public function getMembers()
     {
-        $this->setLayout("admin");
+        
       echo $this->templates->render("adminmembers",[
           "title" => "adminmembers"
        ]);
@@ -25,7 +25,6 @@ class MemberController extends Controller{
 
     public function memberAccount()
     {
-        $this->setLayout("main");
        echo $this->templates->render("account");
     }
     

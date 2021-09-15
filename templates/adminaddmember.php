@@ -1,3 +1,4 @@
+<?=$this->layout('layouts/admin') ?>
 <?php
     use app\core\form\Form;
     $this->title = "Admin Add Member";

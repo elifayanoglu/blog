@@ -1,4 +1,5 @@
+<?=$this->layout('layouts/main') ?>
 <?php
     $this->title = "Favorites";
 ?>
-<h1 style="color: black;">Favorites</h1>
+<h1 style="color: white;">Favorites</h1>

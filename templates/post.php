@@ -29,25 +29,25 @@ $contentController = new ContentController();
         <?=$post['id']?>
         <div class="s-content__header col-full">
             <h1 class="s-content__header-title">
-                <?php echo $thePost['title'] ?>
+                <?php echo $post['title'] ?>
             </h1>
             <ul class="s-content__header-meta">
-                <li class="date"><?php echo $thePost['updated_at'] ?></li>
+                <li class="date"><?php echo $post['updated_at'] ?></li>
                 <li class="cat">
                     In
-                    <a href="/cms/categories/<?php echo $thePost['category'] ?>"><?php echo $thePost['category'] ?></a>
+                    <a href="/cms2/categories/<?php echo $post['category'] ?>"><?php echo $post['category'] ?></a>
                 </li>
             </ul>
         </div> <!-- end s-content__header -->
 
         <div class="s-content__media col-full">
             
-            <img src="<?php echo PUBLIC_PATH ?>/uploads/<?php echo $thePost['image']?>" alt="">
+            <img src="<?php echo PUBLIC_PATH ?>uploads/<?php echo $post['image']?>" alt="">
         </div> <!-- end s-content__media -->
 
         <div class="col-full s-content__main">
 
-            <?php echo html_entity_decode($thePost['content'])?>
+            <?php echo html_entity_decode($post['content'])?>
 
             <hr>
             <div class="s-content__author" style="padding: 0px; margin: 0px;">
@@ -55,11 +55,11 @@ $contentController = new ContentController();
 
                 <div class="s-content__author-about">
                     <h4 class="s-content__author-name">
-                        <a href="/cms/about">Ali Bingül (Author)</a>
+                        <a href="/cms2/about">Elif Ayanoğlu (Author)</a>
                     </h4>
 
                     <ul class="s-content__author-social">
-                        <li><a href="https://www.linkedin.com/in/alibingul/" target="_blank">Linkedin</a></li>
+                        <li><a href="https://www.linkedin.com/in/elifayanoglu/" target="_blank">Linkedin</a></li>
                     </ul>
                 </div>
             </div>

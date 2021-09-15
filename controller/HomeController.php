@@ -23,19 +23,23 @@ class HomeController extends Controller{
        $posts = [
          [
              "id" => 1,
-             "title" => "Alperen blog" 
+             "title" => "Alperen blog",
+              
          ],
          [
             "id" => 2,
-            "title" => "Elif blog" 
+            "title" => "Elif blog" ,
+            
          ],  
          [
             "id" => 3,
-            "title" => "Ali blog" 
+            "title" => "Ali blog" ,
+            
          ],       
          [
             "id" => 4,
-            "title" => "X blog" 
+            "title" => "X blog" ,
+            
          ],
        ]; 
 
@@ -50,7 +54,9 @@ class HomeController extends Controller{
         $a = [
             "id" => $id,
             "title" => "X blog",
-            "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam a dolores fuga labore eligendi. Placeat totam obcaecati necessitatibus natus culpa, magnam sed ipsum, suscipit sapiente cum laboriosam odio rerum dolores."  
+            "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam a dolores fuga labore eligendi. Placeat totam obcaecati necessitatibus natus culpa, magnam sed ipsum, suscipit sapiente cum laboriosam odio rerum dolores."  ,
+            "updated_at" => date('d - m -Y H:i:s'),
+            "category" => "kategori1" 
         ];
       
 
@@ -61,7 +67,6 @@ class HomeController extends Controller{
 
     public function contact()
     {
-        $this->setLayout("main");
         echo $this->templates->render("contact");
     }
 
@@ -72,13 +77,11 @@ class HomeController extends Controller{
 
     public function about()
     {
-        $this->setLayout("main");
         echo $this->templates->render("about");
     }
 
     public function account()
     {
-        $this->setLayout("main");
         echo $this->templates->render("account");
     }
 }

@@ -1,1 +1,1 @@
-{{content}}
+<?=$this->section('content')?>

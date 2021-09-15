@@ -1,3 +1,4 @@
+<?=$this->layout('layouts/admin') ?>
 <?php
 $this->title = "Admin Contents";
 
