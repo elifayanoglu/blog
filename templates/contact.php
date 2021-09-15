@@ -1,3 +1,4 @@
+<?=$this->layout('layouts/main') ?>
 <?php
 $this->title = "Contact";
 ?>

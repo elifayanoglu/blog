@@ -10,7 +10,6 @@ class Controller{
 
     public string $layout = "home";
     public string $action = '';
-    public $twig ;
     public $templates;
 
     /**
@@ -19,12 +18,10 @@ class Controller{
     protected array $middlewares = [];//it's an array of middleware classes
     //The middlewares is an array of BaseMiddlewares
 
-    public function __construct(Engine $templates)
+    public function __construct()
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../templates');
-        $this->twig = new \Twig\Environment($loader);
-       // $this->templates = new Engine(__DIR__ . '/../templates');
-       $this->templates = $templates;
+       
+        $this->templates = new Engine(__DIR__ . '/../templates');
 
     }
     public function setLayout($layout)

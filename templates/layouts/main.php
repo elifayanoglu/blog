@@ -7,6 +7,8 @@ use app\core\Application;
 $categoryController = new CategoryController();
 $memberController = new MemberController();
 ?>
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -14,7 +16,7 @@ $memberController = new MemberController();
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title><?php echo $this->title?></title>
+    <title><?=$title?></title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -130,8 +132,11 @@ $memberController = new MemberController();
             </div> <!-- header-content -->
         </header> <!-- header -->
     </section> <!-- end s-pageheader -->
-  
-    {{content}}
+
+<?=$this->section('content')?>
+
+</body>
+</html>
 
     <!-- s-footer
     ================================================== -->

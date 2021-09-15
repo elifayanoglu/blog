@@ -2,14 +2,14 @@
     "name": "asus/cms2",
     "autoload": {
         "psr-4": {
-            "app\\": "./" 
+            "controller\\": "./", 
+            "middleware\\": "./"
         }
     },
 
     "require": {
         "vlucas/phpdotenv": "^5.3",
         "bramus/router": "~1.6",
-        "twig/twig": "3.0",
         "league/plates": "^3.4"
     }
 }

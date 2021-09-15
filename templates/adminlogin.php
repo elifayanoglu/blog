@@ -2,6 +2,8 @@
 
 use app\core\Application;
 use app\core\form\Form;
+use app\core\Model;
+
 $this->title = "Admin Login";
 ?>
 

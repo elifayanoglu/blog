@@ -1,4 +1,7 @@
+<?php $this->layout('layouts/main') ?>
+
 <?php
+
 /*var_dump($title);
 exit;
 
@@ -19,10 +22,11 @@ $contentController = new ContentController();
 ?>
 <!-- s-content
     ================================================== -->
+    <h1><?=$post['id']?></h1>
 <section class="s-content s-content--narrow s-content--no-padding-bottom">
 
     <article class="row format-gallery">
-
+        <?=$post['id']?>
         <div class="s-content__header col-full">
             <h1 class="s-content__header-title">
                 <?php echo $thePost['title'] ?>

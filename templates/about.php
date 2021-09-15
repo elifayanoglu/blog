@@ -1,7 +1,4 @@
-<?php
-    $this->title = "About";
-?>
-
+<?php $this->layout('layouts/main') ?>
 <!-- s-content
     ================================================== -->
     <section class="s-content s-content--narrow">

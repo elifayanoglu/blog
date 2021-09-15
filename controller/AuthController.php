@@ -31,15 +31,16 @@ class AuthController extends Controller{
                   $response->redirect('/');
                   return ;
             }
-        }
-        // $this->setLayout("auth");*/
-        return $this->templates->render('login');
+        }*/
+        // $this->setLayout("auth");
+        echo $this->templates->render('login');
     }
 
 
-    public function register(Request $request)
+    public function register()
     {
-        $this->setLayout("auth");
+        $request = new Request;
+       // $this->setLayout("auth");
         $errors = [];
 
         $user = new User();
@@ -53,12 +54,12 @@ class AuthController extends Controller{
                 exit;
             }
 
-            return $this->render("register",[
+            echo $this->templates->render("register",[
                 "model" => $user
             ]);
         }
         
-        return $this->render("register",[
+        echo $this->templates->render("register",[
             "errors" => $errors
         ]);
     }

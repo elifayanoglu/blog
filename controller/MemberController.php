@@ -8,10 +8,11 @@ use app\core\Request;
 
 class MemberController extends Controller{
         
+
     public function getMembers()
     {
         $this->setLayout("admin");
-       return $this->render("adminmembers",[
+      echo $this->templates->render("adminmembers",[
           "title" => "adminmembers"
        ]);
 
@@ -20,6 +21,12 @@ class MemberController extends Controller{
     {
         $this->setLayout("admin");
 
+    }
+
+    public function memberAccount()
+    {
+        $this->setLayout("main");
+       echo $this->templates->render("account");
     }
     
 }

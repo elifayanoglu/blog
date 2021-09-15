@@ -7,41 +7,47 @@ use app\core\Request;
 
 class AdminController extends Controller{
 
-    public function adminAccount()
-    {
-        $this->setLayout("admin");
-       return $this->render("account");
-    }
 
     public function adminLogin()  
     {
        $this->setLayout("admin");
-       return $this->render("adminlogin");
+       echo $this->templates->render("adminlogin");
     } 
 
     public function adminContent()
     {
         $this->setLayout("admin");
-        return $this->render("admincontent");
+        echo $this->templates->render("admincontents");
     }
 
     public function adminAddContent()
     {
         $this->setLayout("admin");
-        return $this->render("adminaddcontent");
+        echo $this->templates->render("adminaddcontent");
     }
 
     public function adminAddMember()
     {
         $this->setLayout("admin");
-        return $this->render("adminaddmember");
+        echo $this->templates->render("adminaddmember");
     }
 
     public function adminMembers()
     {
         $this->setLayout("admin");
-        return $this->render("adminmembers");
+        echo $this->templates->render("adminmembers");
     }
+    public function adminComments()
+    {
+        $this->setLayout("admin");
+        echo $this->templates->render("admincomments");
+    }
+    public function adminAccount()
+    {
+        $this->setLayout("admin");
+        echo $this->templates->render("adminaccount");
+    }
+    
 
 }
 

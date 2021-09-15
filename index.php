@@ -12,7 +12,7 @@ use app\model\User;
 use Bramus\Router\Router;
 use app\core\Request;
 use app\core\Response;
-
+use app\middlewares\HelperMiddleware;
 
 require_once __DIR__ . "/vendor/autoload.php";
 require_once "config/settings.php";
@@ -35,21 +35,28 @@ $app= new Application(__DIR__ , $config);
 $router = new Router();
 
 $router->setNamespace('\app\controller');
+
 $router->get('/elif2', 'SiteController@showProfile');
 $router->get("/member/detail/{memberid}","SiteController@member_detail");
 $router->get('/', 'HomeController@main');
 
 $router->get("/categories","HomeController@categories");
+$router->get("/category/{id}","HomeController@category");
 $router->get("/contact","HomeController@contact");
 $router->get("/favourites","HomeController@favourites");
 $router->get("/about","HomeController@about");
 $router->get("/account","HomeController@account");
 
 
-
 $router->get("/admin","SiteController@admin");
 $router->get("/adminlogin","AdminController@adminLogin");
 $router->post("/adminlogin","AdminController@adminLogin");
+$router->get("/admincontents","AdminController@adminContent");
+$router->get("/adminaddcontent","AdminController@adminAddContent");
+$router->get("/adminaddmember","AdminController@adminAddMember");
+$router->get("/adminmembers","AdminController@adminMembers");
+$router->get("/admincomments","AdminController@adminComments");
+$router->get("/adminaccount","AdminController@adminAccount");
 
 
 $router->get("/login","AuthController@login");
@@ -64,6 +71,12 @@ $router->set404(function() {
     header('HTTP/1.1 404 Not Found');
     echo "404";
 });
+
+
+// $router->before('GET', '/.*', function(){
+//     $helper = new HelperMiddleware();
+//     $helper->getParams();
+// });
 
 $router->run();// bu çalıştığında hangi fonk çalışacağına karar vermemizi sağlıyor
 

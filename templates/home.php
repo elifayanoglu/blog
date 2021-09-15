@@ -1,16 +1,16 @@
+<?php $this->layout('layouts/main') ?>
 <?php
 
 use app\controller\ContentController;
 use app\core\Application;
 
-$this->title = "Philosophy";
 $contentController = new ContentController();
 ?>
 
 <!-- s-content
     ================================================== -->
 <section class="s-content">
-
+    <h1><?=$name?></h1>
     <div class="row masonry-wrap">
         <div class="masonry">
             <div class="grid-sizer"></div>

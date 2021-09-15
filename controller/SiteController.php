@@ -26,7 +26,7 @@ class SiteController extends Controller{
         ];
        // return Application::$app->router->renderView("home",$params);
        $this->setLayout("main");
-       return $this->render("main",$params);
+       echo $this->templates->render("main",$params);
     }
 
     public function admin()  
@@ -35,13 +35,13 @@ class SiteController extends Controller{
             "name2"=>"admin"
         ];
         $this->setLayout("admin");
-       return $this->render("admin",$params);
+       echo $this->templates->render("layouts/admin",$params);
     } 
 
     public function contact()
     {
         //return Application::$app->router->renderView("contact");
-        return $this->render("contact");
+        echo $this->templates->render("contact");
     }
 
     public function handleContact(Request $request)
@@ -61,7 +61,7 @@ class SiteController extends Controller{
             "member" => $memberid
         ]);*/
 
-        echo $this->twig->render('index.html', ['name' => 'Fabien',
+        echo $this->templates->render('index.html', ['name' => 'Fabien',
          'member'=>$memberid]);
 
     }
