@@ -13,7 +13,7 @@ $this->title = "Admin Members";
 <div class="table-data__tool">
     <div class="table-data__tool-right">
         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-            <i class="zmdi zmdi-plus"></i><a href="/cms/admin/members/add-member" style="color: white; text-decoration: none;">add member</a></button>
+            <i class="zmdi zmdi-plus"></i><a href="/cms2/admin/members/addmember" style="color: white; text-decoration: none;">add member</a></button>
     </div>
 </div>
 <div class="table-responsive table-responsive-data2">
@@ -27,7 +27,7 @@ $this->title = "Admin Members";
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($memberController->getMembers() as $key => $value) : ?>
+            <?php foreach ($members as $value) : ?>
                 <tr class="tr-shadow">
                     <td id="idRow"><?= $value['id'] ?></td>
                     <td><?= $value['username'] ?></td>

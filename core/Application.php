@@ -8,7 +8,7 @@ class Application{
  
     public static string $ROOT_DIR;
 
-    public string $layout = "home";
+    public string $layout = "main";
     public string $userClass;
     public Router $router;
     public Request $request;
@@ -63,6 +63,9 @@ class Application{
     public function setController(Controller $controller){
         $this->controller=$controller;
     }
+    public static function hasAdminSession(){
+        return self::$app->admin;
+    }
 
     public function login(UserModel $user){
         $this->user = $user;
@@ -77,7 +80,51 @@ class Application{
         $this->session->remove('user');
 
     }
-    public function slugify(){
+
+    public function loginAdmin(DbModel $admin){
+        if(isset($_SESSION['admin'])){
+            self::$app->logoutMember();
+        }
+        $this->admin = $admin;
+        $primaryKey = $admin->primaryKey(); 
+        $primaryValueAdmin = $admin->{$primaryKey};
+        $this->session->set('admin', $primaryValueAdmin);
+        return true;
+    }
+
+    public function logoutMember(){
+        $this->member = null;
+        $this->session->remove('member');
+    }
+
+    public function logoutAdmin(){
+        $this->admin = null;
+        $this->session->remove('admin');
+    }
+
+    public static function slugify($string) {
+        // replace turkish chars
+        $string = str_replace('ü','u',$string);
+        $string = str_replace('Ü','U',$string);
+     
+        $string = str_replace('ğ','g',$string);
+        $string = str_replace('Ğ','G',$string);
+     
+        $string = str_replace('ş','s',$string);
+        $string = str_replace('Ş','S',$string);
+     
+        $string = str_replace('ç','c',$string);
+        $string = str_replace('Ç','C',$string);
+     
+        $string = str_replace('ö','o',$string);
+        $string = str_replace('Ö','O',$string);
         
+        $string = str_replace('ı','i',$string);
+        $string = str_replace('İ','I',$string);
+        
+        $slug= trim(preg_replace('@[^A-Za-z0-9-]+@', '-', $string), '-');
+        
+     
+        return $slug;
     }
 }

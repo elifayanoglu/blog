@@ -8,7 +8,7 @@ use League\Plates\Engine;
 
 class Controller{
 
-    public string $layout = "home";
+    public string $layout = "main";
     public string $action = '';
     public $templates;
 
@@ -32,6 +32,8 @@ class Controller{
 
      public function render($view,$params=[])
      {
+         print_r(2);
+         exit;
          return Application::$app->view->renderView($view,$params);
      }
 

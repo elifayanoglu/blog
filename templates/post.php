@@ -22,6 +22,7 @@ $contentController = new ContentController();
 ?>
 <!-- s-content
     ================================================== -->
+    
     <h1><?=$post['id']?></h1>
 <section class="s-content s-content--narrow s-content--no-padding-bottom">
 

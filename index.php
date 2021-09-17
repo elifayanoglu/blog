@@ -50,11 +50,12 @@ $router->get("/account","HomeController@account");
 $router->get("/admin","SiteController@admin");
 $router->get("/adminlogin","AdminController@adminLogin");
 $router->post("/adminlogin","AdminController@adminLogin");
-$router->get("/admincontents","AdminController@adminContent");
+$router->get("/admin/contents","AdminController@adminContent");
+$router->post("/adminaddcontent","AdminController@adminAddContent");
 $router->get("/adminaddcontent","AdminController@adminAddContent");
-$router->get("/adminaddmember","AdminController@adminAddMember");
-$router->get("/adminmembers","AdminController@adminMembers");
-$router->get("/admincomments","AdminController@adminComments");
+$router->get("/admin/members/addmember","AdminController@adminAddMember");
+$router->get("/admin/members","AdminController@adminMembers");
+$router->get("/admin/comments","AdminController@adminComments");
 $router->get("/adminaccount","AdminController@adminAccount");
 
 

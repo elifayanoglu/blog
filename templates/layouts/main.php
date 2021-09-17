@@ -65,7 +65,7 @@ $memberController = new MemberController();
 
                 <ul class="header__social">
                     <li>
-                        <a href="https://www.linkedin.com/in/alibingul/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/elifayanoglu/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </li>
                     <!-- <li>
                         <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -115,7 +115,7 @@ $memberController = new MemberController();
                         <li class="has-children">
                             <a href="#0" title="">Categories</a>
                             <ul class="sub-menu">
-                                <?php foreach ($categoryController->getCategories() as $key => $value) : ?>
+                                <?php foreach ($categoryController->getCategories() as  $value) : ?>
                                     <li><a href="/cms2/categories/<?php echo $value['slug'] ?>"><?php echo $value['name'] ?></a></li>
                                 <?php endforeach; ?>
                             </ul>

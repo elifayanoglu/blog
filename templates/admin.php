@@ -6,7 +6,7 @@ use app\controller\MemberController;
     use app\core\Application;
     $this->title = "Dashboard";
  //   $memberController = new MemberController();
- //   $contentController = new ContentController();
+ //  $contentController = new ContentController();
 ?>
 <!-- BREADCRUMB-->
 <section class="au-breadcrumb2">

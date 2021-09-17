@@ -2,15 +2,13 @@
 
 namespace app\controller;
 
-use app\core\Application;
 use app\core\Controller;
-use app\core\Request;
+use app\model\Category;
 
 class CategoryController extends Controller{
 
     public function getCategories(){
-       
+        $category = new Category();
+        return $category->getAll(Category::class);
     }
-
-    
 }

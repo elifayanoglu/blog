@@ -5,6 +5,7 @@ namespace app\controller;
 use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
+use app\model\Category;
 
 class HomeController extends Controller{
 
@@ -13,6 +14,9 @@ class HomeController extends Controller{
         $params = [
             "name"=>"realhome"
         ];
+        $contentController = new ContentController;
+
+        $contents = $contentController->getContents();
 
 
        echo $this->templates->render("home", $params);
@@ -20,6 +24,7 @@ class HomeController extends Controller{
 
     public function categories()  
     {
+
        $posts = [
          [
              "id" => 1,
@@ -51,12 +56,14 @@ class HomeController extends Controller{
     public function category($id)  
     {
         // select * from posts where category_id = $id
+        
         $a = [
             "id" => $id,
             "title" => "X blog",
             "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam a dolores fuga labore eligendi. Placeat totam obcaecati necessitatibus natus culpa, magnam sed ipsum, suscipit sapiente cum laboriosam odio rerum dolores."  ,
             "updated_at" => date('d - m -Y H:i:s'),
-            "category" => "kategori1" 
+            "category" =>" ",
+            "image" => ""
         ];
       
 

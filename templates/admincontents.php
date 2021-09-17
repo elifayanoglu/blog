@@ -24,7 +24,7 @@ $contentController = new ContentController();
     <input type="submit" value="New Content" />
 </form> -->
 <div style="display: flex; justify-content: flex-start; padding-left: 1rem;">
-    <button onclick="location.href='/cms/admin/contents/new'" type="button" class="btn btn-dark">New Content</button>
+    <button onclick="location.href='/cms2/admin/contents/new'" type="button" class="btn btn-dark">New Content</button>
 </div>
 
 <?php ?>
@@ -32,7 +32,9 @@ $contentController = new ContentController();
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
-                <?php foreach ($contentController->getContents() as $key => $value) : ?>
+                
+                <?php foreach ($contents as $value) : ?>
+        
                     <div class="col-md-4">
                         <div class="card">
                             <img class="card-img-top" src="<?php echo PUBLIC_PATH ?>/uploads/<?php echo $value['image']?>" alt="Card image cap">

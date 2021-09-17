@@ -67,34 +67,34 @@ $memberController = new MemberController();
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="/cms/admin">
+                        <a href="/cms2/admin">
                             <img src="<?php echo PUBLIC_PATH ?>/images/icon/logo-white.png" alt="CoolAdmin" />
                         </a>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="/cms/admin">
+                                <a href="/cms2/admin">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>Dashboard</a>
                             </li>
                             <li>
-                                <a href="/cms/admin/contents">
+                                <a href="/cms2/admin/contents">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Contents</a>
                             </li>
                             <li>
-                                <a href="/cms/admin/comments">
+                                <a href="/cms2/admin/comments">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Comments</a>
                             </li>
                             <li>
-                                <a href="/cms/admin/members">
+                                <a href="/cms2/admin/members">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Members</a>
                             </li>
                             <li>
-                                <a href="/cms/admin/account">
+                                <a href="/cms2/admin/account">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Account</a>
                             </li>
@@ -109,12 +109,12 @@ $memberController = new MemberController();
                                 <div class="account-dropdown js-dropdown">
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="/cms/admin/account">
+                                            <a href="/cms2/admin/account">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="/cms/admin/logout">
+                                        <a href="/cms2/admin/logout">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
@@ -145,27 +145,27 @@ $memberController = new MemberController();
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="/cms/admin">
+                            <a href="/cms2/admin">
                                 <i class="fas fa-shopping-basket"></i>
                                 <span class="bot-line"></span>Dashboard</a>
                         </li>
                         <li>
-                            <a href="/cms/admin/contents">
+                            <a href="/cms2/admin/contents">
                                 <i class="fas fa-trophy"></i>
                                 <span class="bot-line"></span>Contents</a>
                         </li>
                         <li>
-                            <a href="/cms/admin/comments">
+                            <a href="/cms2/admin/comments">
                                 <i class="fas fa-trophy"></i>
                                 <span class="bot-line"></span>Comments</a>
                         </li>
                         <li>
-                            <a href="/cms/admin/members">
+                            <a href="/cms2/admin/members">
                                 <i class="fas fa-trophy"></i>
                                 <span class="bot-line"></span>Members</a>
                         </li>
                         <li>
-                            <a href="/cms/admin/account">
+                            <a href="/cms2/admin/account">
                                 <i class="fas fa-trophy"></i>
                                 <span class="bot-line"></span>Account</a>
                         </li>
@@ -206,7 +206,7 @@ $memberController = new MemberController();
                  <?php \app\core\Application::$app->session->getFlash('success') ?>
                 </div>
             <?php endif;?>
-
+           
             <?=$this->section('content')?>
             
         </div>
