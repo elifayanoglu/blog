@@ -38,7 +38,7 @@ class MailController extends Controller
     public function sentMailToAdmin($name, $email, $website, $message){
         try{
             $mailer = new Mailer('philosophy684@gmail.com', 'VKe%@D?;B"56*?4e', 'Elif Ayanoğlu | Philosophy');
-            $mailer->addRecipientString("elifayanoglu1006@gmail.com");
+            $mailer->addRecipientString("elif@example.com");
             $mailer->setSpecificContent($name, $message . ' Website : <a href="' . $website . '">Website</a> | Email : ' . $email);
             $mailer->setReplyTo($email, $name);
             $mailer->sendMail();
