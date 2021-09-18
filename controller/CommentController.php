@@ -30,7 +30,7 @@ class CommentController extends Controller
                 exit;
             }
 
-            header('Location: /cms/');
+            header('Location: /cms2/');
             // return $this->render('post', [
             //     'model' => $comment
             // ]);

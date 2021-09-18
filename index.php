@@ -21,6 +21,8 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $config = [
+    'memberClass' => Member::class,
+    'adminClass' => Admin::class,
     'userClass' => User::class,
     "db" =>[ //DB_DSN, DB_USER, DB_PASSWORD .env dosyasından geliyor
         "dsn" => $_ENV["DB_DSN"],
@@ -37,7 +39,9 @@ $router->setNamespace('\app\controller');
 
 $router->get('/elif2', 'SiteController@showProfile');
 $router->get("/member/detail/{memberid}","SiteController@member_detail");
+
 $router->get('/', 'HomeController@main');
+$router->get("/admin","SiteController@admin");
 
 $router->get("/categories","HomeController@categories");
 $router->get("/category/{id}","HomeController@category");
@@ -47,16 +51,19 @@ $router->get("/about","HomeController@about");
 $router->get("/account","HomeController@account");
 
 
-$router->get("/admin","SiteController@admin");
-$router->get("/adminlogin","AdminController@adminLogin");
-$router->post("/adminlogin","AdminController@adminLogin");
+$router->get("/admin/login","AdminController@adminLogin");
+$router->post("/admin/login","AdminController@adminLogin");
 $router->get("/admin/contents","AdminController@adminContent");
-$router->post("/adminaddcontent","AdminController@adminAddContent");
-$router->get("/adminaddcontent","AdminController@adminAddContent");
+$router->post("/admin/addcontent","AdminController@adminAddContent");
+$router->get("/admin/addcontent","AdminController@adminAddContent");
+$router->get("/admin/contents/edit", "AdminController@editContent");
 $router->get("/admin/members/addmember","AdminController@adminAddMember");
 $router->get("/admin/members","AdminController@adminMembers");
+$router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");
-$router->get("/adminaccount","AdminController@adminAccount");
+$router->post("/admin/comments","AdminController@replyComment");
+$router->get("/admin/account","AdminController@adminAccount");
+$router->post("/admin/account","AdminController@adminAccount");
 
 
 $router->get("/login","AuthController@login");

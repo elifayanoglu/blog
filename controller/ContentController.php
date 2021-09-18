@@ -10,6 +10,7 @@ class ContentController extends Controller{
         $contentForm = new ContentForm();
         return $contentForm::getAll(ContentForm::class, $where,  $orderBy, $limit);
     }
+    
 //post'u pasife ve aktife alırken değiştiriyoruz
     public function updateActive($where, $isActive){
         $contentForm = new ContentForm();

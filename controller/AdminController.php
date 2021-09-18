@@ -9,11 +9,17 @@ use app\core\Response;
 use app\model\ContentForm;
 use app\model\Admin;
 use app\model\AdminLoginForm;
+use app\model\Member;
+use app\model\ReplyComment;
+use app\core\middlewares\AdminMiddleware;
 use PDO;
 
 class AdminController extends Controller
 {
-
+    public function __construct() {
+        $this->registerMiddleware(new AdminMiddleware(['contents',
+        'comments', 'members', 'addContent', 'account', 'addMember' ]));
+    }
 
 
     public function adminlogin()
@@ -84,6 +90,24 @@ class AdminController extends Controller
         ]);
     }
 
+    public function editContent(){
+
+        $request= new Request; 
+        $response= new Response;
+        $addContent = new ContentForm();
+        $contentController = new ContentController();
+        if($request->isPost()){
+            $addContent->loadData($request->getBody());
+            if($addContent->validate() && $addContent->update("")){
+
+            }
+        }
+        $this->setLayout('admin');
+        return $this->render('admineditcontent', [
+            'model' => $addContent
+        ]);
+    }
+
     public function adminAddMember()
     {
         $this->setLayout("admin");
@@ -93,7 +117,11 @@ class AdminController extends Controller
     public function adminMembers()
     {
         $this->setLayout("admin");
-        $members = [
+        $memberController = new MemberController;
+
+        $members = $memberController->getMembers();
+        
+     /*   $members = [
             [
                 "id"  => " 1",
                 "username"  => "elif ",
@@ -104,16 +132,44 @@ class AdminController extends Controller
                 "username"  => "esra ",
                 "email" => "esra@example.com "
             ]
-        ];
+        ]; */
         echo $this->templates->render("adminmembers", [
             "members" => $members
         ]);
     }
-    public function adminComments()
+   /*ö public function adminComments()
     {
         $this->setLayout("admin");
+        $adminCommentController = new CommentController;
+
+        $adminComments = $adminCommentController->;
+
         echo $this->templates->render("admincomments");
+    }*/
+
+    public function adminComments(){
+        $this->setLayout('admin');
+        return $this->render('admincomments');
     }
+    
+    public function replyComment(){
+        $request = new Request;
+        $response = new Response;
+        $replyComment = new ReplyComment();
+        $this->setLayout('admin');
+        if($request->isPost()){
+            $replyComment->loadData($request->getBody());
+            if($replyComment->validate() && $replyComment->save()){
+                Application::$app->session->setFlash('success', "You reply the comment successfully");
+                return $response->redirect('/cms2/admin/comments');
+            }
+            echo $this->templates->render('admincomments', [
+                'model' => $replyComment
+            ]);
+        }
+    }
+    
+
     public function adminAccount()
     {
         $this->setLayout("admin");
@@ -124,8 +180,5 @@ class AdminController extends Controller
     {
         $admin = new Admin();
         return $admin::findOne(['id' => $_SESSION['admin']], Admin::class);
-    }
-    public function adminNewContent()
-    {
     }
 }

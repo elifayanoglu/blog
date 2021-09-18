@@ -29,7 +29,7 @@ $orderBy = " ORDER BY id DESC";
 <!-- <div class="table-data__tool">
     <div class="table-data__tool-right">
         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-            <i class="zmdi zmdi-plus"></i><a href="/cms/admin/members/add-member" style="color: white; text-decoration: none;">add member</a></button>
+            <i class="zmdi zmdi-plus"></i><a href="/cms2/admin/members/add-member" style="color: white; text-decoration: none;">add member</a></button>
     </div>
 </div> -->
 <div class="table-responsive table-responsive-data2">
@@ -102,10 +102,10 @@ $orderBy = " ORDER BY id DESC";
     <div class="table">
         <ul id="horizontal-list">
             <?php if ($start > 0) : ?>
-                <li><a class="pgn__prev" href="/cms/admin/comments?start= <?php echo ($start - $limit) ?>">Previous</a></li>
+                <li><a class="pgn__prev" href="/cms2/admin/comments?start= <?php echo ($start - $limit) ?>">Previous</a></li>
             <?php endif; ?>
             <?php if (count($memberController->getMembers()) > ($start + $limit)) : ?>
-                <li><a class="pgn__next" href="/cms/admin/comments?start=<?php echo ($start + $limit) ?>">Next</a></li>
+                <li><a class="pgn__next" href="/cms2/admin/comments?start=<?php echo ($start + $limit) ?>">Next</a></li>
             <?php endif; ?>
         </ul>
     </div>
@@ -135,7 +135,7 @@ $orderBy = " ORDER BY id DESC";
             });
             // console.log(id);
             // window.location.reload();
-            // window.location.href = "/cms/admin/comments/reply";
+            // window.location.href = "/cms2/admin/comments/reply";
         }
         if(e.target.id === "delete_reply"){
             console.log("delete reply clicked");

@@ -23,7 +23,7 @@ class ReplyComment extends DbModel{
         return 'id';
     }
 
-    public function rules() {
+    public  function rules(): array  {
         return [
             'content' => [self::RULE_REQUIRED]
         ];

@@ -23,7 +23,8 @@ class Favorites extends DbModel{
         return 'id';
     } 
 
-    public function rules() {
+    public function rules() :array
+     {
         return [
             
         ];

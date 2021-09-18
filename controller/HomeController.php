@@ -14,6 +14,7 @@ class HomeController extends Controller{
         $params = [
             "name"=>"realhome"
         ];
+
         $contentController = new ContentController;
 
         $contents = $contentController->getContents();
@@ -72,15 +73,17 @@ class HomeController extends Controller{
        ]);
     } 
 
+   
+    public function favourites()
+    {
+        echo $this->templates->render("favorites");
+    }
+
     public function contact()
     {
         echo $this->templates->render("contact");
     }
 
-    public function favourites()
-    {
-        echo $this->templates->render("favorites");
-    }
 
     public function about()
     {
