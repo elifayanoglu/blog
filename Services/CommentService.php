@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controller;
+namespace app\Services;
 
 use app\core\Application;
 use app\core\Controller;
@@ -9,7 +9,7 @@ use app\core\Response;
 use app\model\Comment;
 use app\model\ReplyComment;
 
-class CommentController extends Controller
+class CommentService
 {
     public function getComments($where = '', $orderBy = '')
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\controller;
+namespace app\Services;
 
 use app\core\Controller;
 use app\model\ContentForm;
 
-class ContentController extends Controller{
+class ContentService {
     public function getContents($where = '', $orderBy = '', $limit = ''){
         $contentForm = new ContentForm();
         return $contentForm::getAll(ContentForm::class, $where,  $orderBy, $limit);

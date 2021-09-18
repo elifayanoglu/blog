@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controller;
+namespace app\Services;
 
 use app\core\Application;
 use app\core\Controller;
@@ -8,7 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\model\Subscriber;
 
-class SubscriberController extends Controller
+class SubscriberService 
 {
     public function getSubscribers($orderBy = '', $limit = '')
     {
@@ -28,10 +28,6 @@ class SubscriberController extends Controller
                 Application::$app->session->setFlash('success', "Thanks for subscribe me!");
                 return $response->redirect('/cms2/');
             }
-            $this->setLayout('main');
-            return $this->render('/cms2/', [
-                'model' => $subscriber
-            ]);
         }
     }
 

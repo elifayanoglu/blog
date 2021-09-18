@@ -1,11 +1,11 @@
 <?php
 
-namespace app\controller;
+namespace app\Services;
 
 use app\core\Controller;
 use app\model\Favorites;
 
-class FavoritesController extends Controller
+class FavoritesService 
 {
 
     public function getFavorites($where = '', $orderBy = '', $limit = '')

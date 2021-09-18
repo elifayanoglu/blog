@@ -2,10 +2,11 @@
 <?php
 $this->title = "Admin Contents";
 
-use app\controller\ContentController;
-use app\core\Application;
 
-$contentController = new ContentController();
+use app\core\Application;
+use app\Services\ContentService;
+
+$contentController = new ContentService();
 ?>
 <div style="display: flex; justify-content:flex-start; padding: 1rem;">
     <h1 class="display-6">Contents</h1>

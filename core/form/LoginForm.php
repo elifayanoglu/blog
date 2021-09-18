@@ -1,6 +1,6 @@
 <?php
 
-namespace app\model;
+namespace app\core\form;
 
 use app\core\Application;
 use app\core\Model;

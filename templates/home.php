@@ -1,11 +1,12 @@
 <?php $this->layout('layouts/main') ?>
 <?php
 
-use app\controller\ContentController;
+
 use app\core\Application;
+use app\Services\ContentService;
 
 $this->title = "Philosophy";
-$contentController = new ContentController();
+$contentController = new ContentService();
 $limit = 15;
 if (isset($_GET['start'])) {
     $start = $_GET['start'];

@@ -5,7 +5,6 @@ use app\core\Controller;
 
 class HelperMiddleware extends Controller {
     public function getParams () {
-        print_r(1); exit;
         $this->templates->addData([
             "title" => "başlık",
             "categories" => $this->getCetegories(),

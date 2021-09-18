@@ -12,14 +12,22 @@ use app\model\AdminLoginForm;
 use app\model\Member;
 use app\model\ReplyComment;
 use app\core\middlewares\AdminMiddleware;
+use app\Services\ContentService;
+use app\Services\MemberService;
+use app\Services\SubscriberService;
 use PDO;
 
 class AdminController extends Controller
 {
-    public function __construct() {
-        $this->registerMiddleware(new AdminMiddleware(['contents',
-        'comments', 'members', 'addContent', 'account', 'addMember' ]));
-    }
+  //  public function __construct() {
+        // $this->registerMiddleware(new AdminMiddleware([
+        // 'comments', 
+        // 'members', 
+        // 'addContent',
+        // 'account',
+        // 'addMember'
+        //  ]));
+  //  }
 
 
     public function adminlogin()
@@ -42,8 +50,9 @@ class AdminController extends Controller
 
     public function adminContent()
     {
+
         $this->setLayout("admin");
-        $contentController = new ContentController;
+        $contentController = new ContentService;
 
         $contents = $contentController->getContents();
         /*   $contents = [   
@@ -78,7 +87,7 @@ class AdminController extends Controller
             if ($addContent->validate() && $addContent->save()) {
                 $addContent->uploadImage(ContentForm::class, ['title' => $addContent->title]);
                 $mailController = new MailController();
-                $subscriberController = new SubscriberController();
+                $subscriberController = new SubscriberService();
                 $mailController->sentMailToSubscribers($subscriberController->getSubscribers(), $addContent);
                 Application::$app->session->setFlash('success', "Content successfully uploaded, Mail sended to subscribers");
                 return $response->redirect('/cms2/admin/contents');
@@ -95,7 +104,7 @@ class AdminController extends Controller
         $request= new Request; 
         $response= new Response;
         $addContent = new ContentForm();
-        $contentController = new ContentController();
+        $contentController = new ContentService();
         if($request->isPost()){
             $addContent->loadData($request->getBody());
             if($addContent->validate() && $addContent->update("")){
@@ -117,7 +126,7 @@ class AdminController extends Controller
     public function adminMembers()
     {
         $this->setLayout("admin");
-        $memberController = new MemberController;
+        $memberController = new MemberService;
 
         $members = $memberController->getMembers();
         
@@ -149,7 +158,7 @@ class AdminController extends Controller
 
     public function adminComments(){
         $this->setLayout('admin');
-        return $this->render('admincomments');
+        echo $this->templates->render('admincomments');
     }
     
     public function replyComment(){
@@ -161,7 +170,7 @@ class AdminController extends Controller
             $replyComment->loadData($request->getBody());
             if($replyComment->validate() && $replyComment->save()){
                 Application::$app->session->setFlash('success', "You reply the comment successfully");
-                return $response->redirect('/cms2/admin/comments');
+                return  $response->redirect('/cms2/admin/comments');
             }
             echo $this->templates->render('admincomments', [
                 'model' => $replyComment
@@ -173,7 +182,7 @@ class AdminController extends Controller
     public function adminAccount()
     {
         $this->setLayout("admin");
-        echo $this->templates->render("adminaccount");
+        echo $this->templates->render("/admin/adminaccount");
     }
 
     public function getAdmin()

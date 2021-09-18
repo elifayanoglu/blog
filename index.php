@@ -8,6 +8,7 @@ use app\core\Application;
 use app\controller\AuthController;
 use app\controller\HomeController;
 use app\controller\AdminController;
+use app\core\middlewares\AdminMiddleware;
 use app\model\User;
 use Bramus\Router\Router;
 use app\core\Request;
@@ -63,7 +64,7 @@ $router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");
 $router->post("/admin/comments","AdminController@replyComment");
 $router->get("/admin/account","AdminController@adminAccount");
-$router->post("/admin/account","AdminController@adminAccount");
+//$router->post("/admin/account","AdminController@adminAccount");
 
 
 $router->get("/login","AuthController@login");
@@ -80,10 +81,10 @@ $router->set404(function() {
 });
 
 
-// $router->before('GET', '/.*', function(){
-//     $helper = new HelperMiddleware();
-//     $helper->getParams();
-// });
+$router->before('GET', '/admin/.*', function(){
+    $new = new AdminMiddleware;
+
+});
 
 $router->run();// bu çalıştığında hangi fonk çalışacağına karar vermemizi sağlıyor
 

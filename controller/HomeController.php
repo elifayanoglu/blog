@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\model\Category;
+use app\Services\ContentService;
 
 class HomeController extends Controller{
 
@@ -15,7 +16,7 @@ class HomeController extends Controller{
             "name"=>"realhome"
         ];
 
-        $contentController = new ContentController;
+        $contentController = new ContentService;
 
         $contents = $contentController->getContents();
 

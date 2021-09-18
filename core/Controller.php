@@ -32,8 +32,6 @@ class Controller{
 
      public function render($view,$params=[])
      {
-         print_r(2);
-         exit;
          return Application::$app->view->renderView($view,$params);
      }
 

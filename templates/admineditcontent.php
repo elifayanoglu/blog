@@ -4,17 +4,18 @@
  * @var $model \app\model\ContentForm
  */
 
-use app\controller\CategoryController;
-use app\controller\ContentController;
+
 use app\core\form\Form;
 use app\core\Application;
 use app\core\form\ImageField;
 use app\core\form\Select;
 use app\core\form\SelectField;
 use app\core\form\SummernoteField;
+use app\Services\CategoryService;
+use app\Services\ContentService;
 
-$categoryController = new CategoryController();
-$contentController = new ContentController();
+$categoryController = new CategoryService();
+$contentController = new ContentService();
 $thePost = $contentController->getContent(['title' => $_GET['title']]);
 
 ?>

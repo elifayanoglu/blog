@@ -2,8 +2,9 @@
 
 use app\controller\MemberController;
 use app\core\Application;
+use app\Services\MemberService;
 
-$memberController = new MemberController();
+$memberController = new MemberService();
 
 ?>
 

@@ -10,7 +10,7 @@ class Application{
 
     public string $layout = "main";
     public string $userClass;
-    public Router $router;
+  //  public Router $router;
     public Request $request;
     public Response $response;
     public Session $session;
@@ -19,6 +19,7 @@ class Application{
     public ?Controller $controller = null;
     public ?UserModel $user;
     public View $view;
+    public $admin;
    
     public function __construct($rootPath, array $config)
     {
@@ -28,7 +29,7 @@ class Application{
         $this->response= new Response();
         $this->request= new Request();
         $this->session= new Session();
-        $this->router= new Router($this->request,$this->response);
+    //    $this->router= new Router($this->request,$this->response);
         $this->view = new View();
         $this->db= new Database($config['db']);
 

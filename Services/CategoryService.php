@@ -1,11 +1,11 @@
 <?php
 
-namespace app\controller;
+namespace app\Services;
 
 use app\core\Controller;
 use app\model\Category;
 
-class CategoryController extends Controller{
+class CategoryService {
 
     public function getCategories(){
         $category = new Category();

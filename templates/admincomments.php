@@ -1,11 +1,11 @@
 <?=$this->layout('layouts/admin') ?>
 <?php
 
-use app\controller\CommentController;
-use app\controller\MemberController;
+use app\Services\CommentService;
+use app\Services\MemberService;
 
-$memberController = new MemberController();
-$commentController = new CommentController();
+$memberController = new MemberService();
+$commentController = new CommentService();
 $this->title = "Comments";
 
 if (isset($_GET['start'])) {

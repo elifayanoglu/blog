@@ -3,9 +3,11 @@
 use app\controller\CategoryController;
 use app\controller\MemberController;
 use app\core\Application;
+use app\Services\MemberService;
+use app\Services\CategoryService;
 
-$categoryController = new CategoryController();
-$memberController = new MemberController();
+$categoryController = new CategoryService();
+$memberController = new MemberService();
 ?>
 
 
