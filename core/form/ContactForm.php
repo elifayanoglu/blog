@@ -12,7 +12,7 @@ class ContactForm extends Model{
     public string $website = '';
     public string $body = '';
     
-    public function rules() {
+    public function rules() : array {
         return [
             'name' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED],

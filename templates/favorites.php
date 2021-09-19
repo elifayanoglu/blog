@@ -1,13 +1,13 @@
 <?=$this->layout('layouts/main') ?>
 <?php
 
-use app\controller\ContentController;
-use app\controller\FavoritesController;
 use app\core\Application;
+use app\Services\ContentService;
+use app\Services\FavoritesService;
 
 $this->title = "Favorites";
-$contentController = new ContentController();
-$favoritesController = new FavoritesController();
+$contentController = new ContentService();
+$favoritesController = new FavoritesService();
 $limit = 15;
 if (isset($_GET['start'])) {
     $start = $_GET['start'];

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var $model \app\model\ContentForm
+ * @var $model \app\model\Content
  */
 
 

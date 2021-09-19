@@ -2,7 +2,7 @@
     namespace app\model;
     use app\core\Model;
     use app\core\Application;
-    class AdminLoginForm extends Model{
+    class AdminLogin extends Model{
         
         public string $username = '';
         public string $password = '';

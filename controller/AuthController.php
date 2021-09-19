@@ -8,6 +8,7 @@ use app\core\User as CoreRegisterModel;
 use app\core\Request;
 use app\core\Response;
 use app\core\form\LoginForm;
+use app\core\form\RegisterForm;
 use app\model\User;
 use app\core\middlewares\AuthMiddleware;
 
@@ -58,19 +59,22 @@ class AuthController extends Controller
         // $this->setLayout("auth");
         $errors = [];
 
-        $user = new User();
+        //$user = new User();
+        $registerForm = new RegisterForm;
 
         if ($request->isPost()) {
-            $user->loadData($request->getBody());
+           // $user->loadData($request->getBody());
+            $registerForm->loadData($request->getBody());
 
-            if ($user->validate() && $user->save()) {
+            //if ($user->validate() && $user->save()) {
+             if ($registerForm->validate() && $registerForm->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
                 Application::$app->response->redirect('/');
                 exit;
             }
 
             echo $this->templates->render("register", [
-                "model" => $user
+                "model" =>   $registerForm// $user
             ]);
         }
 
@@ -79,10 +83,12 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request, Response $response)
+    public function logout( )
     {
-        Application::$app->logout();
-        $response->redirect('/');
+        $request= new Request;
+        $response= new Response;
+        Application::$app->logoutMember();
+        $response->redirect('/cms2');
     }
 
     public function profile()

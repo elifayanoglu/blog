@@ -2,12 +2,13 @@
 <?php
 
 use app\core\Application;
-use app\controller\MemberController;
+
 use app\core\form\Form;
+use app\Services\MemberService;
 
 $this->title = "Account";
-$memberController = new MemberController();
-$member = $memberController->getMembers(['id' => $_SESSION['member']]);
+$memberController = new MemberService();
+$member = $memberController->getMember(['id' => $_SESSION['member']]);
 
 ?>
 <!-- <h1 style="color: white;">Account</h1> -->

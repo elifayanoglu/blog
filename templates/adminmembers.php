@@ -1,9 +1,9 @@
 <?=$this->layout('layouts/admin') ?>
 <?php
 
-use app\controller\MemberController;
+use app\Services\MemberService;
 
-$memberController = new MemberController();
+$memberController = new MemberService();
 $this->title = "Admin Members";
 ?>
 

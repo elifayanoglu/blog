@@ -15,7 +15,7 @@ class UpdateAccount extends DbModel{
         return 'member';
     }
 
-    public function rules() {
+    public function rules(): array {
         return [
             'username' => [self::RULE_REQUIRED],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 100]],

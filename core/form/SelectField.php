@@ -2,8 +2,10 @@
 
 namespace app\core\form;
 
-use app\controller\CategoryController;
-$categoryController = new CategoryController();
+
+use app\Services\CategoryService;
+
+$categoryController = new CategoryService();
 
 class SelectField extends BaseField{
     public function renderInput(): string {

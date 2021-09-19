@@ -23,7 +23,9 @@ class Application{
    
     public function __construct($rootPath, array $config)
     {
-        $this->userClass = $config['userClass'];
+       // $this->userClass = $config['userClass'];
+        $this->memberClass = $config['memberClass'];
+        $this->adminClass = $config['adminClass'];
         self::$ROOT_DIR=$rootPath;
         self::$app = $this;
         $this->response= new Response();
@@ -33,17 +35,35 @@ class Application{
         $this->view = new View();
         $this->db= new Database($config['db']);
 
-        $primaryValue = $this->session->get('user');
+      /*  $primaryValue = $this->session->get('user');
         if($primaryValue){
           $primaryKey = $this->userClass::primaryKey();
           $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
         }else{
             $this->user = null;
+        }*/
+
+        $this->db = new Database($config['db']);
+
+        $primaryValueMember = $this->session->get('member');
+        $primaryValueAdmin = $this->session->get('admin');
+        if($primaryValueMember){
+            $primaryKey = $this->memberClass::primaryKey();
+            $this->member = $this->memberClass::findOne([$primaryKey => $primaryValueMember], Member::class);
+        }
+        else {
+            $this->member = null;
+        }
+        if($primaryValueAdmin){
+            $primaryKey = $this->adminClass::primaryKey();
+            $this->admin = $this->adminClass::findOne([$primaryKey => $primaryValueAdmin], Admin::class);
+        }
+        else {
+            $this->admin = null;
         }
     }
-    public static function isGuest()
-    {
-      return !self::$app->user;
+    public static function isGuest(){
+        return !self::$app->member;
     }
 
     public function run(){
@@ -68,19 +88,19 @@ class Application{
         return self::$app->admin;
     }
 
-    public function login(UserModel $user){
+ /*   public function login(UserModel $user){
         $this->user = $user;
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};
         $this->session->set('user',$primaryValue);
         return true;
-    }
+    }*/
 
-    public function logout(){
+ /*   public function logout(){
         $this->user = null;
         $this->session->remove('user');
 
-    }
+    }*/
 
     public function loginAdmin(DbModel $admin){
         if(isset($_SESSION['admin'])){
@@ -92,6 +112,17 @@ class Application{
         $this->session->set('admin', $primaryValueAdmin);
         return true;
     }
+    public function loginMember(DbModel $member){
+        if(isset($_SESSION['admin'])){
+            self::$app->logoutAdmin();
+        }
+        $this->member = $member;
+        $primaryKey = $member->primaryKey(); 
+        $primaryValueMember = $member->{$primaryKey};
+        $this->session->set('member', $primaryValueMember);
+        return true;
+    }
+
 
     public function logoutMember(){
         $this->member = null;

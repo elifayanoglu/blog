@@ -25,14 +25,15 @@
  * @var $model \app\model\ContentForm
  */
 
-use app\controller\CategoryController;
 use app\core\form\Form;
 use app\core\Application;
 use app\core\form\ImageField;
 use app\core\form\Select;
 use app\core\form\SelectField;
 use app\core\form\SummernoteField;
-$categoryController = new CategoryController();
+use app\Services\CategoryService;
+
+$categoryController = new CategoryService();
 
 ?>
 

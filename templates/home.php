@@ -14,7 +14,7 @@ if (isset($_GET['start'])) {
     $start = 0;
 }
 if ($start % $limit !== 0) {
-    header('Location: /cms/');
+    header('Location: /cms2/');
 }
 
 $whereQuery = " WHERE active = 1";

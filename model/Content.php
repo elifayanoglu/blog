@@ -4,7 +4,8 @@ namespace app\model;
 
 use app\core\db\DbModel;
 
-class ContentForm extends DbModel{
+
+class Content extends DbModel{
 
     public string $title = '';
     public string $content = '';

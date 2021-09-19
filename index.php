@@ -62,7 +62,7 @@ $router->get("/admin/members/addmember","AdminController@adminAddMember");
 $router->get("/admin/members","AdminController@adminMembers");
 $router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");
-$router->post("/admin/comments","AdminController@replyComment");
+$router->post("/admin/comments","AdminController@adminComments");
 $router->get("/admin/account","AdminController@adminAccount");
 //$router->post("/admin/account","AdminController@adminAccount");
 

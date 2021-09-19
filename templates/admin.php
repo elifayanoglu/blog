@@ -1,12 +1,15 @@
-<?=$this->layout('layouts/admin') ?>
 <?php
 
-use app\controller\ContentController;
-use app\controller\MemberController;
-    use app\core\Application;
+use app\Services\CommentService;
+use app\Services\ContentService;
+use app\Services\MemberService;
+use app\Services\SubscriberService;
+use app\core\Application;
     $this->title = "Dashboard";
- //   $memberController = new MemberController();
- //  $contentController = new ContentController();
+    $memberController = new MemberService();
+    $contentController = new ContentService();
+    $subscriberController = new SubscriberService();
+    $commentController = new CommentService();
 ?>
 <!-- BREADCRUMB-->
 <section class="au-breadcrumb2">
@@ -61,7 +64,7 @@ use app\controller\MemberController;
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--green">
                     <h2 class="number"><?php echo count($memberController->getMembers())?></h2>
-                    <span class="desc">members</span>
+                    <span class="desc"><a href="/cms2/admin/members" style="color: white;">members</a></span>
                     <div class="icon">
                         <i class="zmdi zmdi-account-o"></i>
                     </div>
@@ -70,16 +73,16 @@ use app\controller\MemberController;
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--orange">
                     <h2 class="number"><?php echo count($contentController->getContents())?></h2>
-                    <span class="desc">contents</span>
+                    <span class="desc"><a href="/cms2/admin/contents" style="color: white;">contents</a></span>
                     <div class="icon">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        <i class="zmdi zmdi-content"></i>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--blue">
-                    <h2 class="number">1,086</h2>
-                    <span class="desc">comments</span>
+                    <h2 class="number"><?php echo count($commentController->getComments())?></h2>
+                    <span class="desc"><a href="/cms2/admin/comments" style="color: white;">comments</a></span>
                     <div class="icon">
                         <i class="zmdi zmdi-calendar-note"></i>
                     </div>
@@ -87,10 +90,10 @@ use app\controller\MemberController;
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--red">
-                    <h2 class="number">1000</h2>
-                    <span class="desc">subscribers</span>
+                    <h2 class="number"><?php echo count($subscriberController->getSubscribers())?></h2>
+                    <span class="desc"><a href="/cms2/admin/subscribers" style="color: white;">subscribers</a></span>
                     <div class="icon">
-                        <i class="zmdi zmdi-money"></i>
+                        <i class="zmdi zmdi-subscriber"></i>
                     </div>
                 </div>
             </div>

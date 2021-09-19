@@ -6,9 +6,9 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
-use app\model\ContentForm;
+use app\model\Content;
 use app\model\Admin;
-use app\model\AdminLoginForm;
+use app\model\AdminLogin;
 use app\model\Member;
 use app\model\ReplyComment;
 use app\core\middlewares\AdminMiddleware;
@@ -35,7 +35,7 @@ class AdminController extends Controller
         $request = new Request;
         $response= new Response;
         $this->setLayout('admin');
-        $admin = new AdminLoginForm();
+        $admin = new AdminLogin();
         if ($request->isPost()) {
             $admin->loadData($request->getBody());
             if ($admin->validate() && $admin->login()) {
@@ -80,12 +80,12 @@ class AdminController extends Controller
         $request = new Request;
         $response = new Response;
 
-        $addContent = new ContentForm();
+        $addContent = new Content();
 
         if ($request->isPost()) {
             $addContent->loadData($request->getBody());
             if ($addContent->validate() && $addContent->save()) {
-                $addContent->uploadImage(ContentForm::class, ['title' => $addContent->title]);
+                $addContent->uploadImage(Content::class, ['title' => $addContent->title]);
                 $mailController = new MailController();
                 $subscriberController = new SubscriberService();
                 $mailController->sentMailToSubscribers($subscriberController->getSubscribers(), $addContent);
@@ -103,7 +103,7 @@ class AdminController extends Controller
 
         $request= new Request; 
         $response= new Response;
-        $addContent = new ContentForm();
+        $addContent = new Content();
         $contentController = new ContentService();
         if($request->isPost()){
             $addContent->loadData($request->getBody());
@@ -112,7 +112,7 @@ class AdminController extends Controller
             }
         }
         $this->setLayout('admin');
-        return $this->render('admineditcontent', [
+        echo $this->templates->render('admineditcontent', [
             'model' => $addContent
         ]);
     }
@@ -182,7 +182,7 @@ class AdminController extends Controller
     public function adminAccount()
     {
         $this->setLayout("admin");
-        echo $this->templates->render("/admin/adminaccount");
+        echo $this->templates->render("adminaccount");
     }
 
     public function getAdmin()

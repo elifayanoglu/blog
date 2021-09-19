@@ -42,7 +42,13 @@ class MemberService
                     Application::$app->response->redirect('/cms2/account');
                     exit;
                 }
+                return $this->templates->render('account', [
+                    'model' => $updateAccount
+                ]);
             }
+            echo $this->templates->render('account', [
+                'model' => $updateAccount
+            ]);
         }
     }
 
