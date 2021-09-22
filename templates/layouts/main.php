@@ -82,10 +82,10 @@ $memberController = new MemberService();
 
                    <?php if (Application::isGuest()) : ?> 
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms2/login" style="color: black;">Login</a>
+                        <a href="/cms2/login" style="color: white;">Login</a>
                     </div>
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms2/register" style="color: black;">Register</a>
+                        <a href="/cms2/register" style="color: white;">Register</a>
                     </div>
                 <?php else : ?>
                     <div style="display:flex; justify-content:flex-end;">
@@ -118,7 +118,7 @@ $memberController = new MemberService();
                             <a href="#0" title="">Categories</a>
                             <ul class="sub-menu">
                                 <?php foreach ($categoryController->getCategories() as  $value) : ?>
-                                    <li><a href="/cms2/categories/<?php echo $value['slug'] ?>"><?php echo $value['name'] ?></a></li>
+                                    <li><a href="/cms2/category/<?php echo $value['id'] ?>"><?php echo $value['name'] ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </li>

@@ -9,7 +9,7 @@ class Subscriber extends DbModel{
     public string $email = '';
     
     public static function tableName(): string {
-        return 'subscriber';
+        return 'subscribers';
     }
 
     public function attributes(): array{

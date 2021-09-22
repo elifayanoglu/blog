@@ -73,14 +73,15 @@ class AuthController extends Controller
                 exit;
             }
 
-            echo $this->templates->render("register", [
-                "model" =>   $registerForm// $user
-            ]);
+           
         }
-
         echo $this->templates->render("register", [
-            "errors" => $errors
+            "model" =>   $registerForm// $user
         ]);
+
+    /*    echo $this->templates->render("register", [
+            "errors" => $errors
+        ]);*/
     }
 
     public function logout( )

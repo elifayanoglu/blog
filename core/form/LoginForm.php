@@ -24,7 +24,7 @@ class LoginForm extends Model{
             $this->addError('email', "User does not exist with this email");
             return false;
         }
-        if(!password_verify($this->password, $member->password)){
+        if(md5($this->password) == $member->password){
             $this->addError('password', "Password is incorrect");
             return false;
         }

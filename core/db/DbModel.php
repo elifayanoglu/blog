@@ -59,7 +59,10 @@ abstract class DbModel extends Model{
 
         public static function getAll($class, $where = '',  $orderBy = '', $limit = ''){
             $tableName = $class::tableName();
-            $statement = self::prepare("SELECT * FROM $tableName" . $where . $orderBy . $limit);
+            $statement = self::prepare("SELECT * FROM $tableName " . $where . $orderBy . $limit);
+           /* $statement->execute($where);
+            $statement->execute($orderBy);
+            $statement->execute($limit);*/
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }

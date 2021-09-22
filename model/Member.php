@@ -1,7 +1,9 @@
 <?php
 namespace app\model;
 use app\core\db\DbModel;
-class Member extends MemberModel{
+use app\core\Model;
+
+class Member extends DbModel{
 
     public string $username = '';
     public string $email = '';

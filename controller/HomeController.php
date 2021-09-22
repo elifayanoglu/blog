@@ -6,7 +6,9 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\model\Category;
+use app\Services\CategoryService;
 use app\Services\ContentService;
+use app\Services\MemberService;
 
 class HomeController extends Controller{
 
@@ -26,8 +28,10 @@ class HomeController extends Controller{
 
     public function categories()  
     {
+        $category = new CategoryService;
+        $categories = $category->getCategories();
 
-       $posts = [
+      /* $posts = [
          [
              "id" => 1,
              "title" => "Alperen blog",
@@ -48,35 +52,46 @@ class HomeController extends Controller{
             "title" => "X blog" ,
             
          ],
-       ]; 
+       ]; */
 
        echo $this->templates->render("categorypost", [
-            "posts" => $posts
+            "posts" => $categories// $posts
        ]);
     } 
 
     public function category($id)  
     {
+        $categoryService = new CategoryService;
+        $category = $categoryService->getCategory(["id"=> $id]);
+      //  print_r($category); exit;
         // select * from posts where category_id = $id
+        $content = new ContentService;
+        $name=$category->name;
+        $contents = $content->getContents("where category = '{$name}'");
         
-        $a = [
+    
+
+
+      /*  $a = [
             "id" => $id,
             "title" => "X blog",
             "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam a dolores fuga labore eligendi. Placeat totam obcaecati necessitatibus natus culpa, magnam sed ipsum, suscipit sapiente cum laboriosam odio rerum dolores."  ,
             "updated_at" => date('d - m -Y H:i:s'),
             "category" =>" ",
             "image" => ""
-        ];
+        ];*/
       
 
-       echo $this->templates->render("post", [
-            "post" => $a,
+       echo $this->templates->render("posts", [
+            "posts" => $contents,
+            "categoryname" => $name
        ]);
     } 
 
    
     public function favourites()
     {
+        
         echo $this->templates->render("favorites");
     }
 
@@ -93,7 +108,14 @@ class HomeController extends Controller{
 
     public function account()
     {
-        echo $this->templates->render("account");
+        $member = new MemberService();
+        $members = $member->getMembers(/*['id' => $_SESSION['member']]*/);
+        echo $this->templates->render("account",[
+            "members" => $members
+        ]);
+    }
+    public function postDetail(){
+        
     }
 }
 

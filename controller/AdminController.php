@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\form\RegisterForm;
 use app\core\Request;
 use app\core\Response;
 use app\model\Content;
@@ -14,7 +15,7 @@ use app\model\ReplyComment;
 use app\core\middlewares\AdminMiddleware;
 use app\Services\ContentService;
 use app\Services\MemberService;
-use app\Services\SubscriberService;
+use app\Services\SubscribersService;
 use PDO;
 
 class AdminController extends Controller
@@ -87,7 +88,7 @@ class AdminController extends Controller
             if ($addContent->validate() && $addContent->save()) {
                 $addContent->uploadImage(Content::class, ['title' => $addContent->title]);
                 $mailController = new MailController();
-                $subscriberController = new SubscriberService();
+                $subscriberController = new SubscribersService();
                 $mailController->sentMailToSubscribers($subscriberController->getSubscribers(), $addContent);
                 Application::$app->session->setFlash('success', "Content successfully uploaded, Mail sended to subscribers");
                 return $response->redirect('/cms2/admin/contents');
@@ -120,7 +121,31 @@ class AdminController extends Controller
     public function adminAddMember()
     {
         $this->setLayout("admin");
-        echo $this->templates->render("adminaddmember");
+          $request= new Request;
+          $response= new Response;
+
+          //$user = new User();
+          $register = new RegisterForm;
+
+          if ($request->isPost()) {
+             // $user->loadData($request->getBody());
+              $register->loadData($request->getBody());
+  
+              //if ($user->validate() && $user->save()) {
+               if ($register->validate() && $register->save()) {
+                  Application::$app->session->setFlash('success', 'Thanks for registering');
+                  Application::$app->response->redirect('/cms2/admin/members');
+                  exit;
+              }
+  
+             /* echo $this->templates->render("adminaddmember", [
+                  "model" =>   $register// $user
+              ]);*/
+          }
+          echo $this->templates->render("adminaddmember", [
+            "model" =>   $register// $user
+        ]);
+       // echo $this->templates->render("adminaddmember");
     }
 
     public function adminMembers()
@@ -185,6 +210,11 @@ class AdminController extends Controller
         echo $this->templates->render("adminaccount");
     }
 
+    public function subscriber()
+    {
+        $this->setLayout("admin");
+        echo $this->templates->render("adminsubscribers");
+    }
     public function getAdmin()
     {
         $admin = new Admin();

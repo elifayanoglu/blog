@@ -3,12 +3,12 @@
 use app\Services\CommentService;
 use app\Services\ContentService;
 use app\Services\MemberService;
-use app\Services\SubscriberService;
+use app\Services\SubscribersService;
 use app\core\Application;
     $this->title = "Dashboard";
     $memberController = new MemberService();
     $contentController = new ContentService();
-    $subscriberController = new SubscriberService();
+    $subscriberController = new SubscribersService();
     $commentController = new CommentService();
 ?>
 <!-- BREADCRUMB-->

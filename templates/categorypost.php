@@ -36,7 +36,7 @@
                             <div class="entry__date">
                                 <a href="single-standard.html">December 10, 2017</a>
                             </div>
-                            <h1 class="entry__title"><a href="/cms2/category/<?=$post['id']?>"><?=$post['title']?></a></h1>
+                            <h1 class="entry__title"><a href="/cms2/category/<?=$post['id']?>"><?=$post['name'/*'title'*/]?></a></h1>
                             
                         </div>
                         <div class="entry__excerpt">
@@ -46,8 +46,7 @@
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Cooking</a>
-                                <a href="category.html">Health</a>
+                                <a href="category.html">Categories</a>
                             </span>
                         </div>
                     </div>

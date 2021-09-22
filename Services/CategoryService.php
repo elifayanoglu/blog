@@ -11,4 +11,10 @@ class CategoryService {
         $category = new Category();
         return $category->getAll(Category::class);
     }
+    
+    public function getCategory($where){
+        $categoryForm = new Category();
+        return $categoryForm::findOne($where, Category::class);
+    }
+
 }

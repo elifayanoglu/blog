@@ -8,7 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\model\Subscriber;
 
-class SubscriberService 
+class SubscribersService 
 {
     public function getSubscribers($orderBy = '', $limit = '')
     {

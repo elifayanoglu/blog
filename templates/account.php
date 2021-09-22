@@ -7,8 +7,7 @@ use app\core\form\Form;
 use app\Services\MemberService;
 
 $this->title = "Account";
-$memberController = new MemberService();
-$member = $memberController->getMember(['id' => $_SESSION['member']]);
+
 
 ?>
 <!-- <h1 style="color: white;">Account</h1> -->
@@ -36,10 +35,10 @@ $member = $memberController->getMember(['id' => $_SESSION['member']]);
                 Account.
             </h1>
             <h1 class="s-content__header-title">
-                Username : <?php echo $member->username ?>
+                Username : <?php echo $members['username']?>
             </h1>
             <h1 class="s-content__header-title">
-                Email : <?php echo $member->email ?>
+                Email : <?php echo $members['email'] ?>
             </h1>
         </div> <!-- end s-content__header -->
 
@@ -51,12 +50,12 @@ $member = $memberController->getMember(['id' => $_SESSION['member']]);
 
                     <div class="form-field">
                         <label for="username">Username</label>
-                        <input name="username" type="text" id="username" class="full-width" placeholder="Username" value="<?php echo $member->username ?>">
+                        <input name="username" type="text" id="username" class="full-width" placeholder="Username" value="<?php echo $members['username'] ?>">
                     </div>
 
                     <div class="form-field">
                         <!-- <label for="email">Email</label> -->
-                        <input name="email" disabled type="email" id="email" class="full-width" placeholder="Email" value="<?php echo $member->email ?>">
+                        <input name="email" disabled type="email" id="email" class="full-width" placeholder="Email" value="<?php echo $members['email'] ?>">
                     </div>
 
                     <div class="form-field">

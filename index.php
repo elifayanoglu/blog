@@ -46,17 +46,21 @@ $router->get("/admin","SiteController@admin");
 
 $router->get("/categories","HomeController@categories");
 $router->get("/category/{id}","HomeController@category");
+$router->get("/post/{title}","HomeController@postDetail");
 $router->get("/contact","HomeController@contact");
 $router->get("/favourites","HomeController@favourites");
 $router->get("/about","HomeController@about");
 $router->get("/account","HomeController@account");
 
 
+
 $router->get("/admin/login","AdminController@adminLogin");
 $router->post("/admin/login","AdminController@adminLogin");
 $router->get("/admin/contents","AdminController@adminContent");
-$router->post("/admin/addcontent","AdminController@adminAddContent");
-$router->get("/admin/addcontent","AdminController@adminAddContent");
+//$router->post("/admin/addcontent","AdminController@adminAddContent");
+//$router->get("/admin/addcontent","AdminController@adminAddContent");
+$router->get("/admin/contents/new","AdminController@adminAddContent");
+$router->post("/admin/contents/new","AdminController@adminAddContent");
 $router->get("/admin/contents/edit", "AdminController@editContent");
 $router->get("/admin/members/addmember","AdminController@adminAddMember");
 $router->get("/admin/members","AdminController@adminMembers");
@@ -64,6 +68,7 @@ $router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");
 $router->post("/admin/comments","AdminController@adminComments");
 $router->get("/admin/account","AdminController@adminAccount");
+$router->get("/admin/subscribers","AdminController@subscriber");
 //$router->post("/admin/account","AdminController@adminAccount");
 
 
