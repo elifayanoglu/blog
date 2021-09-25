@@ -15,7 +15,7 @@ if (isset($_GET['start'])) {
     $start = 0;
 }
 if ($start % $limit !== 0) {
-    header('Location: /cms2/favourites');
+    header('Location: /cms2/favorites');
 }
 
 $whereQuery = " WHERE active = 1";
@@ -23,6 +23,15 @@ $orderBy = " ORDER BY id DESC";
 $limitQuery = " LIMIT " . $start . "," . $limit . ' ';
 
 ?>
+<!-- DATA TABLE -->
+<h3 class="title-5 m-b-35" style="padding-top: 1rem;">favorites</h3>
+<div class="table-data__tool">
+    <div class="table-data__tool-right">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <i class="zmdi zmdi-plus"></i><a href="/cms2/admin/favorites/addfavorite" style="color: white; text-decoration: none;">add favorite</a></button>
+    </div>
+</div>
+<!-- END DATA TABLE -->
 
 <!-- s-content
     ================================================== -->
@@ -43,7 +52,7 @@ $limitQuery = " LIMIT " . $start . "," . $limit . ' ';
                         <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
                             <div class="entry__thumb">
-                                <a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>" class="entry__thumb-link">
+                                <a href="/cms2/post/<?php echo $content['title'] ?>" class="entry__thumb-link">
                                     <img src="<?= PUBLIC_PATH ?>/uploads/<?php echo $content['image'] ?>">
                                 </a>
                             </div>
@@ -52,9 +61,9 @@ $limitQuery = " LIMIT " . $start . "," . $limit . ' ';
                                 <div class="entry__header">
 
                                     <div class="entry__date">
-                                        <a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>"><?php echo $content['updated_at'] ?></a>
+                                        <a href="/cms2/post/<?php echo $content['id'] ?>"><?php echo $content['updated_at'] ?></a>
                                     </div>
-                                    <h1 class="entry__title"><a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>"><?php echo $content['title'] ?></a></h1>
+                                    <h1 class="entry__title"><a href="/cms2/post/<?php echo $content['id'] ?>"><?php echo $content['title'] ?></a></h1>
 
                                 </div>
                                 <!-- <div class="entry__excerpt"> -->

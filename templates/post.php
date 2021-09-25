@@ -35,7 +35,7 @@ $contentController = new ContentController();
                 <li class="date"><?php echo $post['updated_at'] ?></li>
                 <li class="cat">
                     In
-                    <a href="/cms2/categories/<?php echo $post['category'] ?>"><?php echo $post['category'] ?></a>
+                    <a href="/cms2/category/<?php echo $post['category'] ?>"><?php echo $post['category'] ?></a>
                 </li>
             </ul>
         </div> <!-- end s-content__header -->
@@ -101,7 +101,7 @@ $contentController = new ContentController();
                     <li class="depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-01.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="<?= PUBLIC_PATH ?>/philosophy/images/avatars/user-01.jpg" alt="">
                         </div>
 
                         <div class="comment__content">
@@ -127,7 +127,7 @@ $contentController = new ContentController();
                     <li class="thread-alt depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="<?= PUBLIC_PATH ?>/philosophy/images/avatars/user-04.jpg" alt="">
                         </div>
 
                         <div class="comment__content">
@@ -154,7 +154,7 @@ $contentController = new ContentController();
                             <li class="depth-2 comment">
 
                                 <div class="comment__avatar">
-                                    <img width="50" height="50" class="avatar" src="images/avatars/user-03.jpg" alt="">
+                                    <img width="50" height="50" class="avatar" src="<?= PUBLIC_PATH ?>/philosophy/images/avatars/user-03.jpg" alt="">
                                 </div>
 
                                 <div class="comment__content">
@@ -181,7 +181,7 @@ $contentController = new ContentController();
                                     <li class="depth-3 comment">
 
                                         <div class="comment__avatar">
-                                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                                            <img width="50" height="50" class="avatar" src="<?= PUBLIC_PATH ?>/philosophy/images/avatars/user-04.jpg" alt="">
                                         </div>
 
                                         <div class="comment__content">
@@ -215,7 +215,7 @@ $contentController = new ContentController();
                     <li class="depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-02.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="<?= PUBLIC_PATH ?>/philosophy/images/avatars/user-02.jpg" alt="">
                         </div>
 
                         <div class="comment__content">
@@ -248,21 +248,8 @@ $contentController = new ContentController();
 
                     <form name="contactForm" id="contactForm" method="post" action="">
                         <fieldset>
-
-                            <div class="form-field">
-                                <input name="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cWebsite" type="text" id="cWebsite" class="full-width" placeholder="Website" value="">
-                            </div>
-
                             <div class="message form-field">
-                                <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+                                <textarea name="content" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
                             </div>
 
                             <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>

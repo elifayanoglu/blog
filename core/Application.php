@@ -3,13 +3,18 @@ namespace app\core;
 
 use app\core\db\DbModel;
 use app\core\db\Database;
+use app\model\Member;
+use app\model\Admin;
+use Exception;
 
 class Application{
  
     public static string $ROOT_DIR;
 
     public string $layout = "main";
-    public string $userClass;
+    public string $memberClass;
+    public string $adminClass;
+   // public string $userClass;
   //  public Router $router;
     public Request $request;
     public Response $response;
@@ -19,10 +24,13 @@ class Application{
     public ?Controller $controller = null;
     public ?UserModel $user;
     public View $view;
-    public $admin;
+//    public $admin;
+    public ?DbModel $member;
+    public ?DbModel $admin;
    
     public function __construct($rootPath, array $config)
     {
+
        // $this->userClass = $config['userClass'];
         $this->memberClass = $config['memberClass'];
         $this->adminClass = $config['adminClass'];
@@ -31,9 +39,10 @@ class Application{
         $this->response= new Response();
         $this->request= new Request();
         $this->session= new Session();
+       
     //    $this->router= new Router($this->request,$this->response);
         $this->view = new View();
-        $this->db= new Database($config['db']);
+      //  $this->db= new Database($config['db']);
 
       /*  $primaryValue = $this->session->get('user');
         if($primaryValue){
@@ -103,7 +112,7 @@ class Application{
     }*/
 
     public function loginAdmin(DbModel $admin){
-        if(isset($_SESSION['admin'])){
+        if(isset($_SESSION['member'])){
             self::$app->logoutMember();
         }
         $this->admin = $admin;

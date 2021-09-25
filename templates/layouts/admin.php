@@ -1,9 +1,12 @@
 <?php
 
+use app\controller\AdminController;
 use app\core\Application;
+use app\model\Admin;
 use app\Services\MemberService;
 
 $memberController = new MemberService();
+$adminController = new Admin;
 
 ?>
 
@@ -158,8 +161,8 @@ $memberController = new MemberService();
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="/cms2/admin/logout">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
+                                    <a href="/cms2/admin/logout">
+                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
                             </div>

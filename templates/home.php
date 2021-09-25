@@ -34,7 +34,7 @@ $limitQuery = " LIMIT " . $start . "," . $limit . ' ';
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
                     <div class="entry__thumb">
-                        <a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>" class="entry__thumb-link">
+                        <a href="/cms2/post/<?php echo $content['id'] ?>" class="entry__thumb-link">
                             <img src="<?= PUBLIC_PATH ?>/uploads/<?php echo $content['image'] ?>">
                         </a>
                     </div>
@@ -43,9 +43,9 @@ $limitQuery = " LIMIT " . $start . "," . $limit . ' ';
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>"><?php echo $content['updated_at'] ?></a>
+                                <a href="/cms2/post/<?php echo $content['id'] ?>"><?php echo $content['updated_at'] ?></a>
                             </div>
-                            <h1 class="entry__title"><a href="/cms2/<?php echo html_entity_decode(Application::slugify($content['title']), ENT_HTML5) ?>"><?php echo $content['title'] ?></a></h1>
+                            <h1 class="entry__title"><a href="/cms2/post/<?php echo $content['id'] ?>"><?php echo $content['title'] ?></a></h1>
 
                         </div>
                         <!-- <div class="entry__excerpt"> -->

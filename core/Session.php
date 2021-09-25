@@ -32,7 +32,10 @@ class Session{
 
   public function getFlash($key)
   {
-     return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
+
+     $message = $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
+     //$this->remove($key);
+     return $message;
   }
 
   public function set($key, $value)
@@ -46,7 +49,7 @@ class Session{
   }
 
   public function remove($key){
-       unset($_SESSION[$key]);
+       unset($_SESSION[SELF::FLASH_KEY][$key]);
   }
 
   
@@ -58,7 +61,7 @@ class Session{
    foreach($flashMessages as $key => &$flashMessage)
    {
        if($flashMessage['remove']){
-           unset($flashMessages['$key']);
+           unset($flashMessages[$key]);
        }
    }
    $_SESSION[self::FLASH_KEY] = $flashMessages;

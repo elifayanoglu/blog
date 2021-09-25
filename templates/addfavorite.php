@@ -1,10 +1,29 @@
-<?=$this->layout('layouts/admin') ?>
+<?=$this->layout('layouts/main') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summernote</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+</head>
+<body>
+  <div id="summernote"><p>Hello Summernote</p></div>
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+</body>
+</html>
 <?php
 
 /**
- * @var $model \app\model\Content
+ * @var $model \app\model\ContentForm
  */
-
 
 use app\core\form\Form;
 use app\core\Application;
@@ -13,10 +32,8 @@ use app\core\form\Select;
 use app\core\form\SelectField;
 use app\core\form\SummernoteField;
 use app\Services\CategoryService;
-use app\Services\ContentService;
 
 $categoryController = new CategoryService();
-$contentController = new ContentService();
 
 ?>
 
@@ -25,19 +42,15 @@ $contentController = new ContentService();
 <?php echo new SummernoteField($model, 'content') ?>
 <?php echo new ImageField($model, 'image') ?>
 
-<!-- <form method="post" action="" enctype="multipart/form-data">
-    <input type="text" class="au-input au-input--full form-control" value="// echo $thePost['title']?>">
-</form> -->
-
 
 
 <label>Category</label>
 <?php Select::begin() ?>
 <option disabled hidden>Category</option>
-<?php foreach ($categoryController->getCategories() as $category) : ?>
-    <option value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?></option>
-<?php endforeach; ?>
-<?php Select::end() ?>
+<?php foreach($categoryController->getCategories() as $category):?>
+    <option value="<?php echo $category['name']?>"><?php echo $category['name']?></option>
+<?php endforeach;?>
+<?php Select::end()?>
 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="submit">upload</button>
 <?php Form::end()  ?>
 

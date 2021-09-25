@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -14,6 +15,8 @@ use Bramus\Router\Router;
 use app\core\Request;
 use app\core\Response;
 use app\middlewares\HelperMiddleware;
+use app\model\Member;
+use app\model\Admin;
 
 require_once __DIR__ . "/vendor/autoload.php";
 require_once "config/settings.php";
@@ -34,6 +37,7 @@ $config = [
 
 $app= new Application(__DIR__ , $config);
 
+//filter_var($value, FILTER_VALIDATE_EMAIL);
 $router = new Router();
 
 $router->setNamespace('\app\controller');
@@ -46,14 +50,19 @@ $router->get("/admin","SiteController@admin");
 
 $router->get("/categories","HomeController@categories");
 $router->get("/category/{id}","HomeController@category");
-$router->get("/post/{title}","HomeController@postDetail");
+$router->get("/post/{id}","HomeController@postDetail");
+$router->post("/post/{id}","HomeController@postDetail");
 $router->get("/contact","HomeController@contact");
-$router->get("/favourites","HomeController@favourites");
+$router->post("/contact","HomeController@contact");
+//$router->get('/contact', "HomeController@contactMe");
+//$router->post('/contact', "HomeController@contactMe");
+$router->get("/favorites","HomeController@favourites");
+$router->get("/favorites/addfavorite","HomeController@addFavourite");
 $router->get("/about","HomeController@about");
 $router->get("/account","HomeController@account");
 
 
-
+$router->get("/admin/content/change", "AdminController@adminChangeStatus");
 $router->get("/admin/login","AdminController@adminLogin");
 $router->post("/admin/login","AdminController@adminLogin");
 $router->get("/admin/contents","AdminController@adminContent");
@@ -61,7 +70,8 @@ $router->get("/admin/contents","AdminController@adminContent");
 //$router->get("/admin/addcontent","AdminController@adminAddContent");
 $router->get("/admin/contents/new","AdminController@adminAddContent");
 $router->post("/admin/contents/new","AdminController@adminAddContent");
-$router->get("/admin/contents/edit", "AdminController@editContent");
+$router->get("/admin/contents/edit/{id}", "AdminController@editContent");
+$router->post("/admin/contents/edit/{id}", "AdminController@editContent");
 $router->get("/admin/members/addmember","AdminController@adminAddMember");
 $router->get("/admin/members","AdminController@adminMembers");
 $router->post("/admin/members","AdminController@adminMembers");
@@ -87,8 +97,11 @@ $router->set404(function() {
 
 
 $router->before('GET', '/admin/.*', function(){
-    $new = new AdminMiddleware;
-
+    //$new = new AdminMiddleware;
+    /*if (!isset($_SESSION['admin'])) {
+        header('Location: /admin/login');
+        exit();
+    }*/
 });
 
 $router->run();// bu çalıştığında hangi fonk çalışacağına karar vermemizi sağlıyor

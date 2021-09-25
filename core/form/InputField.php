@@ -12,7 +12,7 @@ class InputField extends BaseField{//InputFiled
     public const TYPE_NUMBER = "number"; 
 
     public string $type;
-   // public Model $model;
+   public Model $model;
    // public string $attribute;
 
     public function __construct(Model $model, string $attribute)
@@ -29,6 +29,7 @@ class InputField extends BaseField{//InputFiled
     }
     public function renderInput(): string
     {
+       // print_r($this->model->);exit;
         return sprintf(
             '<input type="%s" name="%s" value="%s" class="au-input au-input--full form-control%s" placeholder="%s">',
             $this->type,

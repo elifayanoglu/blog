@@ -37,7 +37,7 @@ $contentController = new ContentService();
                 <?php foreach ($contents as $value) : ?>
         
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card postcard"  data-post-id = "<?= $value['id']?>">
                             <img class="card-img-top" src="<?php echo PUBLIC_PATH ?>/uploads/<?php echo $value['image']?>" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title mb-3"><a href="" style="text-decoration: none; color: black;" id="title"><?php echo $value['title']?></a></h4>
@@ -47,6 +47,7 @@ $contentController = new ContentService();
                                     <span class="switch-handle"></span>
                                 </label>
                             </div>
+                            <div class="card-footer"><a href="/cms2/admin/contents/edit/<?= $value['id']?>">Edit</a></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -60,7 +61,8 @@ $contentController = new ContentService();
     function switchToggle(e) {
         if (e.target.id === "switch") {
             console.log("switch clicked");
-            let title = $(this).closest("div").find("a[id='title']").html();
+            let id = $(this).closest(".postcard").attr("data-post-id");
+            console.log(id); 
             let isActive = e.target.checked;
             if(isActive){
                 isActive = 1;
@@ -69,9 +71,9 @@ $contentController = new ContentService();
                 isActive = 0;
             }
             console.log(isActive);
-            if (confirm(`Do you want to delete content which title : ${title}`)) {
-                $.get('contents', {
-                    'title': title,
+            if (confirm(`Do you want to passive this content`)) {
+                $.get('/cms2/admin/content/change', {
+                    'id': id,
                     'isActive': isActive
                 });
             }

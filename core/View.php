@@ -5,10 +5,13 @@ namespace app\core;
 
 class View{
 
-    public string $title = '';
+    public string $title = 'Philosophy';
 
         public function renderView($view,$params=[])
      {
+        foreach($params as $key => $value){
+            $$key = $value;
+        }
              $viewContent=$this->renderOnlyView($view,$params);
              $layoutContent= $this->layoutContent();
              return str_replace("{{content}}",$viewContent,$layoutContent);

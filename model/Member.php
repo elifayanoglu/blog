@@ -3,7 +3,7 @@ namespace app\model;
 use app\core\db\DbModel;
 use app\core\Model;
 
-class Member extends DbModel{
+class Member extends MemberModel{
 
     public string $username = '';
     public string $email = '';

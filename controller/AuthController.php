@@ -43,7 +43,7 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
             if ($loginForm->validate() && $loginForm->login()) {
-                $response->redirect('/');
+                $response->redirect('/cms2/');
                 return;
             }
          }
@@ -56,7 +56,8 @@ class AuthController extends Controller
     public function register()
     {
         $request = new Request;
-        // $this->setLayout("auth");
+        $response = new Response;
+         $this->setLayout("auth");
         $errors = [];
 
         //$user = new User();
@@ -69,19 +70,15 @@ class AuthController extends Controller
             //if ($user->validate() && $user->save()) {
              if ($registerForm->validate() && $registerForm->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
-                Application::$app->response->redirect('/');
+                Application::$app->response->redirect('/cms2/login');
                 exit;
             }
-
-           
+            
         }
         echo $this->templates->render("register", [
-            "model" =>   $registerForm// $user
-        ]);
-
-    /*    echo $this->templates->render("register", [
+            "model" =>   $registerForm,// $user
             "errors" => $errors
-        ]);*/
+        ]);
     }
 
     public function logout( )
@@ -89,7 +86,8 @@ class AuthController extends Controller
         $request= new Request;
         $response= new Response;
         Application::$app->logoutMember();
-        $response->redirect('/cms2');
+        echo $this->templates->render("logout");
+        $response->redirect('/cms2/');
     }
 
     public function profile()

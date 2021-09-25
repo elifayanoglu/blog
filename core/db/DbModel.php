@@ -29,10 +29,20 @@ abstract class DbModel extends Model{
         }
         
         public function update($where){
+
             $tableName = $this->tableName();
             $attributes = $this->attributes();
+            // print_r($attributes);
+            // $a = " ";
+            // foreach($attributes as $attribute){
+            //     $a.=":$attribute=". $this->{$attribute};
+            // }
+            // echo $a;
+            // exit;
             $params = array_map(fn($attr) => "$attr = :$attr", $attributes);
-            $statement = self::prepare("UPDATE $tableName SET " . implode(',', $params) . $where);
+           // print_r("UPDATE $tableName SET " . implode(',', $params). $where);//exit;
+            $statement = self::prepare("UPDATE $tableName SET " . implode(',', $params) ." " . $where);
+
             foreach($attributes as $attribute){
                 $statement->bindValue(":$attribute", $this->{$attribute});
             }
@@ -53,12 +63,17 @@ abstract class DbModel extends Model{
             foreach($where as $key => $item){
                 $statement->bindValue(":$key", $item);
             }
+          
             $statement->execute();
             return $statement->fetchObject(static::class);
         }
 
         public static function getAll($class, $where = '',  $orderBy = '', $limit = ''){
             $tableName = $class::tableName();
+
+         //   print_r("SELECT * FROM $tableName " . $where . $orderBy . $limit);
+           // exit;
+       
             $statement = self::prepare("SELECT * FROM $tableName " . $where . $orderBy . $limit);
            /* $statement->execute($where);
             $statement->execute($orderBy);

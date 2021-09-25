@@ -13,12 +13,15 @@ abstract class Model
     public const RULE_UNIQUE = "unique";
 
     public function loadData($data){
-    foreach($data as $key=>$value){
-        if(property_exists($this,$key)){//verilen özelliğin belirtilen sınıfta olup 
-     //olmadığını (ve mevcut kapsamdan erişilebilir olup olmadığını) kontrol eder.
-             $this->{$key}=$value;
+        //print_r($data); exit;
+        foreach($data as $key=>$value){
+            if(property_exists($this,$key)){//verilen özelliğin belirtilen sınıfta olup 
+        //olmadığını (ve mevcut kapsamdan erişilebilir olup olmadığını) kontrol eder.
+             
+              $this->{$key}=$value;
+            }
         }
-    }
+        
     }
 
     abstract public function rules():array;
@@ -37,7 +40,9 @@ abstract class Model
     public function validate()
     {
      foreach($this->rules() as $attribute => $rules){
+        
          $value = $this->{$attribute};
+        
           foreach($rules as $rule){
 
                $ruleName=$rule;
@@ -49,8 +54,8 @@ abstract class Model
                if($ruleName === self::RULE_REQUIRED && !$value){
                      $this->addErrorByRule($attribute, self::RULE_REQUIRED);
                }
-               if($ruleName === self::RULE_EMAIL && filter_var($value, FILTER_VALIDATE_EMAIL)){
-                     $this->addErrorByRule($attribute, self::RULE_EMAIL);
+               if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)){
+                $this->addErrorByRule($attribute, self::RULE_EMAIL);
                }
 
                if($ruleName === self::RULE_MIN && strlen($value) < $rule["min"]){

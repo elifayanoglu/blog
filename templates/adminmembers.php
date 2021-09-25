@@ -9,13 +9,13 @@ $this->title = "Admin Members";
 
 
 <!-- DATA TABLE -->
-<h3 class="title-5 m-b-35" style="padding-top: 1rem;">members</h3>
+<!--<h3 class="title-5 m-b-35" style="padding-top: 1rem;">members</h3>
 <div class="table-data__tool">
     <div class="table-data__tool-right">
         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
             <i class="zmdi zmdi-plus"></i><a href="/cms2/admin/members/addmember" style="color: white; text-decoration: none;">add member</a></button>
     </div>
-</div>
+</div> -->
 <div class="table-responsive table-responsive-data2">
     <table class="table table-data2">
         <thead>

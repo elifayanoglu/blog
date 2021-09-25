@@ -20,10 +20,17 @@
                 $this->addError('email', "Admin username is incorrect");
                 return false;
             }
-            if(!password_verify($this->password, $admin->password)){
+            // if(!password_verify($this->password, $admin->password)){
+            //     $this->addError('password', "Password is incorrect");
+            //     return false;
+            // }
+            if(md5($this->password) != $admin->password){
                 $this->addError('password', "Password is incorrect");
                 return false;
             }
+            //session oluştur admin =1
+            //middleware session da admin var mı yok mu kontrol et true false ata
+            //yoksa middleware de hata bastır
             return Application::$app->loginAdmin($admin);
         }
     

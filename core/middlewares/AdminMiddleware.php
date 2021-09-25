@@ -9,9 +9,10 @@ class AdminMiddleware{
     public array $actions = [];
 
     public function __construct(array $actions = []) {
-       /* if(!Application::hasAdminSession()){
+        /*if(!Application::hasAdminSession()){
             throw new ForbiddenException();
          }*/
+        
     }
 
     

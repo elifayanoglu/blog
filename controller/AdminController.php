@@ -51,11 +51,12 @@ class AdminController extends Controller
 
     public function adminContent()
     {
-
+        
         $this->setLayout("admin");
         $contentController = new ContentService;
 
         $contents = $contentController->getContents();
+        
         /*   $contents = [   
             [
                 "image"  => "about.jpg",
@@ -70,10 +71,17 @@ class AdminController extends Controller
                 "content"=> " "
             ]
         ];*/
-
         echo $this->templates->render("admincontents", [
             "contents" => $contents
         ]);
+    }
+    public function adminChangeStatus(){
+        $request= new Request;
+        $data =$request->getBody();
+        if(isset($data['id']) && isset($data['isActive'])){
+            $contentForm = new Content();
+            $contentForm::updateWhere(['id'=> $data['id']], Content::class, $data['isActive']);
+        }
     }
 
     public function adminAddContent()
@@ -82,6 +90,7 @@ class AdminController extends Controller
         $response = new Response;
 
         $addContent = new Content();
+ 
 
         if ($request->isPost()) {
             $addContent->loadData($request->getBody());
@@ -100,21 +109,30 @@ class AdminController extends Controller
         ]);
     }
 
-    public function editContent(){
-
+    public function editContent($id){
+        
         $request= new Request; 
         $response= new Response;
         $addContent = new Content();
-        $contentController = new ContentService();
-        if($request->isPost()){
-            $addContent->loadData($request->getBody());
-            if($addContent->validate() && $addContent->update("")){
 
+        $contentController = new ContentService();
+        $content =  $contentController->getContent(['id'=>$id]);
+        $addContent->title="Yazılım2";
+        if($request->isPost()){
+            $data=$request->getBody();
+            $data["image"]=$content->title;
+            $addContent->loadData($data);
+            if($addContent->validate() && $addContent->update("WHERE id = $id")){
+             
+                $addContent->uploadImage(Content::class, ['title' => $addContent->title]);
+                Application::$app->session->setFlash('success', "You edit the content successfully");
+                return  $response->redirect('/cms2/admin/contents');
             }
         }
         $this->setLayout('admin');
         echo $this->templates->render('admineditcontent', [
-            'model' => $addContent
+            'model' =>  $content,//$addContent,
+            'thePost' =>(array)$content
         ]);
     }
 
@@ -213,6 +231,7 @@ class AdminController extends Controller
     public function subscriber()
     {
         $this->setLayout("admin");
+        
         echo $this->templates->render("adminsubscribers");
     }
     public function getAdmin()
