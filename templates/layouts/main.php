@@ -89,7 +89,7 @@ $memberController = new MemberService();
                     </div>
                 <?php else : ?>
                     <div style="display:flex; justify-content:flex-end;">
-                        <a href="/cms2/logout" style="color: white;"><?php echo /*Application::$app->member->getDisplayName();*/ $memberController->getMember(['id' => $_SESSION['member']])->username ?>
+                        <a href="/cms2/logout" style="color: white;"><?php echo $memberController->getMember(['id' => $_SESSION['member']])->username?>
                             (Logout)
                         </a>
                     </div>

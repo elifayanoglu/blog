@@ -28,10 +28,6 @@ class LoginForm extends Model{
                  $this->addError('password', "Password is incorrect");
                  return false;
         }
-        // if(md5($this->password) != $member->password){
-        //     $this->addError('password', "Password is incorrect");
-        //     return false;
-        // }
         return Application::$app->loginMember($member);
     }
 

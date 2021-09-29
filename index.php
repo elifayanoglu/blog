@@ -23,7 +23,6 @@ require_once "config/settings.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
 $config = [
     'memberClass' => Member::class,
     'adminClass' => Admin::class,
@@ -35,15 +34,18 @@ $config = [
     ]
 ];
 
+
 $app= new Application(__DIR__ , $config);
 
-//filter_var($value, FILTER_VALIDATE_EMAIL);
+
 $router = new Router();
+
+
 
 $router->setNamespace('\app\controller');
 
-$router->get('/elif2', 'SiteController@showProfile');
-$router->get("/member/detail/{memberid}","SiteController@member_detail");
+//$router->get('/elif2', 'SiteController@showProfile');
+//$router->get("/member/detail/{memberid}","SiteController@member_detail");
 
 $router->get('/', 'HomeController@main');
 $router->get("/admin","SiteController@admin");
@@ -57,7 +59,7 @@ $router->post("/contact","HomeController@contact");
 //$router->get('/contact', "HomeController@contactMe");
 //$router->post('/contact', "HomeController@contactMe");
 $router->get("/favorites","HomeController@favourites");
-$router->get("/favorites/addfavorite","HomeController@addFavourite");
+//$router->get("/favorites/addfavorite","HomeController@addFavourite");
 $router->get("/about","HomeController@about");
 $router->get("/account","HomeController@account");
 
@@ -72,7 +74,7 @@ $router->get("/admin/contents/new","AdminController@adminAddContent");
 $router->post("/admin/contents/new","AdminController@adminAddContent");
 $router->get("/admin/contents/edit/{id}", "AdminController@editContent");
 $router->post("/admin/contents/edit/{id}", "AdminController@editContent");
-$router->get("/admin/members/addmember","AdminController@adminAddMember");
+//$router->get("/admin/members/addmember","AdminController@adminAddMember");
 $router->get("/admin/members","AdminController@adminMembers");
 $router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");

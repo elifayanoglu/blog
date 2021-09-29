@@ -24,7 +24,6 @@ class SiteController extends Controller{
         $params = [
             "name"=>"home"
         ];
-       // return Application::$app->router->renderView("home",$params);
        $this->setLayout("main");
        echo $this->templates->render("main",$params);
     }
@@ -35,7 +34,7 @@ class SiteController extends Controller{
             "name2"=>"admin"
         ];
         $this->setLayout("admin");
-       echo $this->templates->render("layouts/admin",$params);
+       echo $this->templates->render("admin",$params);
     } 
 
     public function contact()

@@ -1,3 +1,4 @@
+<?=$this->layout('layouts/admin') ?>
 <?php
 
 use app\Services\CommentService;

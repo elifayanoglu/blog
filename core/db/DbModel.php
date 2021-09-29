@@ -32,17 +32,9 @@ abstract class DbModel extends Model{
 
             $tableName = $this->tableName();
             $attributes = $this->attributes();
-            // print_r($attributes);
-            // $a = " ";
-            // foreach($attributes as $attribute){
-            //     $a.=":$attribute=". $this->{$attribute};
-            // }
-            // echo $a;
-            // exit;
             $params = array_map(fn($attr) => "$attr = :$attr", $attributes);
            // print_r("UPDATE $tableName SET " . implode(',', $params). $where);//exit;
             $statement = self::prepare("UPDATE $tableName SET " . implode(',', $params) ." " . $where);
-
             foreach($attributes as $attribute){
                 $statement->bindValue(":$attribute", $this->{$attribute});
             }
@@ -70,14 +62,7 @@ abstract class DbModel extends Model{
 
         public static function getAll($class, $where = '',  $orderBy = '', $limit = ''){
             $tableName = $class::tableName();
-
-         //   print_r("SELECT * FROM $tableName " . $where . $orderBy . $limit);
-           // exit;
-       
             $statement = self::prepare("SELECT * FROM $tableName " . $where . $orderBy . $limit);
-           /* $statement->execute($where);
-            $statement->execute($orderBy);
-            $statement->execute($limit);*/
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }

@@ -119,6 +119,9 @@ $adminController = new Admin;
                         </a>
                     </div>
                     <div class="header__navbar">
+                    
+                        
+                       
                         <ul class="list-unstyled">
                             <li>
                                 <a href="/cms2/admin">
@@ -147,18 +150,21 @@ $adminController = new Admin;
                             </li>
                         </ul>
                     </div>
-                    <div class="header__tool">
+                    <div class="header__navbar">
                         <div class="account-wrap">
+                      
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">Elif Ayanoğlu</a>
+                                <a class="js-acc-btn"  href="#">Elif Ayanoğlu</a>
                                 </div>
-                                <div class="account-dropdown js-dropdown">
+                               
+                                <div class="account-dropdown js-dropdown"style ="#0000;">
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="/cms2/admin/account">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
+                    
                                     </div>
                                     <div class="account-dropdown__footer">
                                     <a href="/cms2/admin/logout">

@@ -59,15 +59,10 @@ class AuthController extends Controller
         $response = new Response;
          $this->setLayout("auth");
         $errors = [];
-
-        //$user = new User();
         $registerForm = new RegisterForm;
 
         if ($request->isPost()) {
-           // $user->loadData($request->getBody());
             $registerForm->loadData($request->getBody());
-
-            //if ($user->validate() && $user->save()) {
              if ($registerForm->validate() && $registerForm->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
                 Application::$app->response->redirect('/cms2/login');
@@ -76,7 +71,7 @@ class AuthController extends Controller
             
         }
         echo $this->templates->render("register", [
-            "model" =>   $registerForm,// $user
+            "model" =>   $registerForm,
             "errors" => $errors
         ]);
     }

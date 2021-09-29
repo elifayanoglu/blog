@@ -1,4 +1,4 @@
-<?=$this->layout('layouts/main') ?>
+<?=$this->layout('layouts/auth') ?>
 <?php
     use app\core\form\Form;
     $this->title = "Register";

@@ -12,9 +12,9 @@ use app\controller\MailController;
 class MemberService
 {
 
-    public function getMembers(/*$orderBy = '', $limit = ''*/){
+    public function getMembers(){
         $member = new Member();
-        return $member->getAll(Member::class/*, '',  $orderBy, $limit*/);
+        return $member->getAll(Member::class);
     }
 
     public function deleteMember($where){

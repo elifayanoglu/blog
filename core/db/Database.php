@@ -10,9 +10,7 @@ use app\core\Application;
 class Database
 {
     public \PDO $pdo;
-
-    public function __construct(array $config)
-    {
+    public function __construct(array $config) {
         $dsn = $config["dsn"] ?? "";
         $user = $config["user"] ?? "";
         $password = $config["password"] ?? "";
@@ -21,7 +19,13 @@ class Database
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
         //(hata raporlama,istisnaları belirler ve çalışmayı durdurur)
     }
-    
+    public function prepare($sql){
+      return $this->pdo->prepare($sql);
+    }
+    protected function log($message){
+        echo '[' . date('Y - m -d H:i:s') . '] - ' . $message .PHP_EOL;
+    }
+
     public function applyMigrations()
     {
       $this->createMigrationsTable();
@@ -80,16 +84,7 @@ class Database
          $statement->execute();
     }
 
-    public function prepare($sql)
-    {
-      return $this->pdo->prepare($sql);
-
-    }
-
-    protected function log($message)
-    {
-        echo '[' . date('Y - m -d H:i:s') . '] - ' . $message .PHP_EOL;
-    }
+    
 }
 
 ?>

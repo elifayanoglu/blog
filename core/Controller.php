@@ -8,9 +8,21 @@ use League\Plates\Engine;
 
 class Controller{
 
-    public string $layout = "main";
+    public string $layout = "main";//default layout
     public string $action = '';
-    public $templates;
+    public function setLayout($layout)
+    {//set layout of content
+        $this->layout = $layout;
+
+    }
+     public function render($view,$params=[])
+     {// render view
+         return Application::$app->view->renderView($view,$params);
+     }
+
+
+
+  
 
     /**
      * @var \app\core\middlewares\BaseMiddleware[]
@@ -18,22 +30,14 @@ class Controller{
     protected array $middlewares = [];//it's an array of middleware classes
     //The middlewares is an array of BaseMiddlewares
 
+    public $templates;
     public function __construct()
     {
        
         $this->templates = new Engine(__DIR__ . '/../templates');
 
     }
-    public function setLayout($layout)
-    {
-        $this->layout = $layout;
-
-    }
-
-     public function render($view,$params=[])
-     {
-         return Application::$app->view->renderView($view,$params);
-     }
+    
 
      public function registerMiddleware(BaseMiddleware $middleware)
      {

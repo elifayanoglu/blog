@@ -75,6 +75,7 @@ class AdminController extends Controller
             "contents" => $contents
         ]);
     }
+    
     public function adminChangeStatus(){
         $request= new Request;
         $data =$request->getBody();

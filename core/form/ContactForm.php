@@ -9,7 +9,6 @@ class ContactForm extends Model{
     
     public string $name = '';
     public string $email = '';
-    public string $website = '';
     public string $body = '';
     
     public function rules() : array {

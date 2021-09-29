@@ -35,6 +35,12 @@ class HomeController extends Controller{
         $category = new CategoryService;
         $categories = $category->getCategories();
 
+
+       echo $this->templates->render("categorypost", [
+            "posts" => $categories
+       ]);
+    } 
+    
       /* $posts = [
          [
              "id" => 1,
@@ -58,20 +64,18 @@ class HomeController extends Controller{
          ],
        ]; */
 
-       echo $this->templates->render("categorypost", [
-            "posts" => $categories// $posts
-       ]);
-    } 
-
     public function category($id)  
     {
         $categoryService = new CategoryService;
         $category = $categoryService->getCategory(["id"=> $id]);
-      //  print_r($category); exit;
-        // select * from posts where category_id = $id
         $content = new ContentService;
         $name=$category->name;
         $contents = $content->getContents("where category = '{$name}'");
+       echo $this->templates->render("posts", [
+            "posts" => $contents,
+            "categoryname" => $name
+       ]);
+    } 
 
       /*  $a = [
             "id" => $id,
@@ -82,12 +86,6 @@ class HomeController extends Controller{
             "image" => ""
         ];*/
       
-
-       echo $this->templates->render("posts", [
-            "posts" => $contents,
-            "categoryname" => $name
-       ]);
-    } 
     public function postDetail($id)
     {
          $request = new Request;
@@ -112,8 +110,7 @@ class HomeController extends Controller{
          
        echo $this->templates->render("post", [
         "post" => (array)$content1
-   ]);
-        
+   ]);   
     }
   
     public function favourites()
@@ -125,7 +122,6 @@ class HomeController extends Controller{
     public function addFavourite()
     {
         $favorite = new FavoritesService;
-        $addFavorite =$favorite->addFavorite();
         echo $this->templates->render("addfavorite");
     }
 

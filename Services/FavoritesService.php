@@ -13,11 +13,6 @@ class FavoritesService
         $favorites = new Favorites();
         return $favorites->getAll(Favorites::class, $where, $orderBy, $limit);
     }
-
-    public function addFavorites()
-    {
-    }
-
     protected function getFavorite($where)
     {
         $favorites = new Favorites();
@@ -26,10 +21,6 @@ class FavoritesService
 
     public function isFavorite($where)
     {
-        // if($this->getFavorite($where)){
-        //     return true;
-        // }
-        // return false;
         $favorites = new Favorites();
         $tableName = 'favorites';
         $sql = "SELECT * FROM $tableName $where";
@@ -41,7 +32,7 @@ class FavoritesService
         return false;
     }
 
-    public function addFavorite($member_id, $post_id)
+  /*  public function addFavorite($member_id, $post_id)
     {
         $favorites = new Favorites();
         $tableName = Favorites::tableName();
@@ -58,5 +49,5 @@ class FavoritesService
         $sql = "DELETE FROM $tableName $whereQuery";
         $statement = $favorites->prepare($sql);
         $statement->execute();
-    }
+    }*/
 }

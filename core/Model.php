@@ -13,7 +13,6 @@ abstract class Model
     public const RULE_UNIQUE = "unique";
 
     public function loadData($data){
-        //print_r($data); exit;
         foreach($data as $key=>$value){
             if(property_exists($this,$key)){//verilen özelliğin belirtilen sınıfta olup 
         //olmadığını (ve mevcut kapsamdan erişilebilir olup olmadığını) kontrol eder.
@@ -37,35 +36,26 @@ abstract class Model
     }
 
     public array $errors = [];
-    public function validate()
-    {
+    public function validate(){
      foreach($this->rules() as $attribute => $rules){
-        
          $value = $this->{$attribute};
-        
           foreach($rules as $rule){
-
                $ruleName=$rule;
-
                if(!is_string($rule)){
                     $ruleName=$rule[0];
                }
-
                if($ruleName === self::RULE_REQUIRED && !$value){
                      $this->addErrorByRule($attribute, self::RULE_REQUIRED);
                }
                if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)){
                 $this->addErrorByRule($attribute, self::RULE_EMAIL);
                }
-
                if($ruleName === self::RULE_MIN && strlen($value) < $rule["min"]){
                 $this->addErrorByRule($attribute, self::RULE_MIN , $rule);
                }
-
                if($ruleName === self::RULE_MAX && strlen($value) > $rule["max"]){
                 $this->addErrorByRule($attribute, self::RULE_MAX , $rule);
                }
-
                if($ruleName === self::RULE_MATCH && $value !== $this->{$rule["match"]}){
                 $rule['match']= $this->getLabel($rule['match']);
                 $this->addErrorByRule($attribute, self::RULE_MATCH, $rule );
@@ -82,11 +72,9 @@ abstract class Model
                        $this->addErrorByRule($attribute, self::RULE_UNIQUE, ["field" => $this->getLabel($attribute)]);
                    }
                }
-
           }
      }  
      return empty($this->errors);
-
     }
     public function errorMessage($rule)
     {

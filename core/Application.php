@@ -30,8 +30,6 @@ class Application{
    
     public function __construct($rootPath, array $config)
     {
-
-       // $this->userClass = $config['userClass'];
         $this->memberClass = $config['memberClass'];
         $this->adminClass = $config['adminClass'];
         self::$ROOT_DIR=$rootPath;
@@ -39,19 +37,8 @@ class Application{
         $this->response= new Response();
         $this->request= new Request();
         $this->session= new Session();
-       
-    //    $this->router= new Router($this->request,$this->response);
         $this->view = new View();
-      //  $this->db= new Database($config['db']);
-
-      /*  $primaryValue = $this->session->get('user');
-        if($primaryValue){
-          $primaryKey = $this->userClass::primaryKey();
-          $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
-        }else{
-            $this->user = null;
-        }*/
-
+     
         $this->db = new Database($config['db']);
 
         $primaryValueMember = $this->session->get('member');
@@ -71,8 +58,12 @@ class Application{
             $this->admin = null;
         }
     }
+
     public static function isGuest(){
         return !self::$app->member;
+    }
+    public static function hasAdminSession(){
+        return self::$app->admin;
     }
 
     public function run(){
@@ -92,9 +83,6 @@ class Application{
 
     public function setController(Controller $controller){
         $this->controller=$controller;
-    }
-    public static function hasAdminSession(){
-        return self::$app->admin;
     }
 
  /*   public function login(UserModel $user){
