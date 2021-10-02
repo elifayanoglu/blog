@@ -44,8 +44,6 @@ $router = new Router();
 
 $router->setNamespace('\app\controller');
 
-//$router->get('/elif2', 'SiteController@showProfile');
-//$router->get("/member/detail/{memberid}","SiteController@member_detail");
 
 $router->get('/', 'HomeController@main');
 $router->get("/admin","SiteController@admin");
@@ -68,8 +66,6 @@ $router->get("/admin/content/change", "AdminController@adminChangeStatus");
 $router->get("/admin/login","AdminController@adminLogin");
 $router->post("/admin/login","AdminController@adminLogin");
 $router->get("/admin/contents","AdminController@adminContent");
-//$router->post("/admin/addcontent","AdminController@adminAddContent");
-//$router->get("/admin/addcontent","AdminController@adminAddContent");
 $router->get("/admin/contents/new","AdminController@adminAddContent");
 $router->post("/admin/contents/new","AdminController@adminAddContent");
 $router->get("/admin/contents/edit/{id}", "AdminController@editContent");
@@ -80,8 +76,9 @@ $router->post("/admin/members","AdminController@adminMembers");
 $router->get("/admin/comments","AdminController@adminComments");
 $router->post("/admin/comments","AdminController@adminComments");
 $router->get("/admin/account","AdminController@adminAccount");
+$router->post("/admin/account","AdminController@adminAccount");
 $router->get("/admin/subscribers","AdminController@subscriber");
-//$router->post("/admin/account","AdminController@adminAccount");
+
 
 
 $router->get("/login","AuthController@login");
@@ -97,35 +94,4 @@ $router->set404(function() {
     echo "404";
 });
 
-
-$router->before('GET', '/admin/.*', function(){
-    //$new = new AdminMiddleware;
-    /*if (!isset($_SESSION['admin'])) {
-        header('Location: /admin/login');
-        exit();
-    }*/
-});
-
 $router->run();// bu çalıştığında hangi fonk çalışacağına karar vermemizi sağlıyor
-
-//$router->get("/cms2/elif",function(){ echo "elif";});
-
-
-/*$app->router->get("/cms2/",[SiteController::class,"home"]);
-$app->router->get("/cms2/contact",[SiteController::class,"contact"]);
-$app->router->post("/cms2/contact",[SiteController::class,"handleContact"]);
-
-$app->router->get("/cms2/categories",[HomeController::class,"categorypost"]);
-$app->router->get("/cms2/contact",[HomeController::class,"contact"]);
-$app->router->get("/cms2/favourites",[HomeController::class,"favorites"]);
-$app->router->get("/cms2/about",[HomeController::class,"about"]);
-$app->router->get("/cms2/account",[HomeController::class,"account"]);
-
-$app->router->get("/cms2/admin",[SiteController::class,"admin"]);
-$app->router->get("/cms2/login",[AuthController::class,"login"]);
-$app->router->post("/cms2/login",[AuthController::class,"login"]);
-$app->router->get("/cms2/register",[AuthController::class,"register"]);
-$app->router->post("/cms2/register",[AuthController::class,"register"]);
-$app->router->get("/cms2/logout",[AuthController::class,"logout"]);
-$app->router->get("/cms2/profile",[AuthController::class,"profile"]);*/
-

@@ -5,13 +5,10 @@ use app\core\Model;
 
 
 abstract class BaseField{
-    
     abstract public function renderInput(): string;
-
     public Model $model;
     public string $attribute;
     public string $type;
-    
     /**
      * @param \app\core\Model $model
      * @param string         $attribute
@@ -21,7 +18,6 @@ abstract class BaseField{
         $this->model=$model;
         $this->attribute=$attribute;
     }
-
     public function __toString()
     {
         return sprintf(

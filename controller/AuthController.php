@@ -10,30 +10,12 @@ use app\core\Response;
 use app\core\form\LoginForm;
 use app\core\form\RegisterForm;
 use app\model\User;
-use app\core\middlewares\AuthMiddleware;
+
 
 class AuthController extends Controller
 {
 
 
-  //  public function __construct()
-  //  {
-        //$this->registerMiddleware(new AuthMiddleware(['profile']));
-
-
-   // }
-
-    /* $request = new Request;
-       $response= new Response;
-
-        $loginForm = new LoginForm();
-        if($request->isPost()){
-            $loginForm->loadData($request->getBody());
-            if($loginForm->validate() && $loginForm->login()){
-                  $response->redirect('/');
-                  return ;
-            }
-        }*/
     public function login()
     {
         $request = new Request;

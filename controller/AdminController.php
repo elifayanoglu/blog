@@ -137,7 +137,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function adminAddMember()
+   public function adminAddMember()
     {
         $this->setLayout("admin");
           $request= new Request;
